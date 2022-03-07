@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Bundles and Installer
 Bundle
+Installer/*.back.aip
+Installer/Isolate Warnings-cache/*
+Installer/Isolate Warnings-SetupFiles/*
