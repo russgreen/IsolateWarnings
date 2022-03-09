@@ -7,6 +7,8 @@
     <Copyright>Copyright © Russell Green</Copyright>
     <Version>3.1</Version>
     <UseWindowsForms>true</UseWindowsForms>
+	  <LangVersion>10</LangVersion>
+	  <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == '2018'">
