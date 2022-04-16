@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.UI;
+using System;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
@@ -10,6 +11,8 @@ namespace IsolateWarnings;
 class App : IExternalApplication
 {
     public static UIControlledApplication cachedUiCtrApp;
+
+    private readonly string _tabName = "RG Tools";
 
     public Result OnShutdown(UIControlledApplication application)
     {
@@ -31,7 +34,7 @@ class App : IExternalApplication
         //Check if "Archisoft Tools" already exists and use if its there
         try
         {
-            panel = cachedUiCtrApp.CreateRibbonPanel("Archisoft Tools", Guid.NewGuid().ToString());
+            panel = cachedUiCtrApp.CreateRibbonPanel(_tabName, Guid.NewGuid().ToString());
             panel.Name = "ARBG_IsolateWarnings_ExtApp";
             panel.Title = "Isolate Warnings";
         }
@@ -48,13 +51,19 @@ class App : IExternalApplication
                         archisoftPanel = true;
                         break;
                     }
+
+                    if (folder.ToLower().Contains("rg") == true & folder.ToLower().Contains("rg isolate warnings") == false)
+                    {
+                        archisoftPanel = true;
+                        break;
+                    }
                 }
             }
 
             if (archisoftPanel == true)
             {
-                cachedUiCtrApp.CreateRibbonTab("Archisoft Tools");
-                panel = cachedUiCtrApp.CreateRibbonPanel("Archisoft Tools", Guid.NewGuid().ToString());
+                cachedUiCtrApp.CreateRibbonTab(_tabName);
+                panel = cachedUiCtrApp.CreateRibbonPanel(_tabName, Guid.NewGuid().ToString());
                 panel.Name = "ARBG_IsolateWarnings_ExtApp";
                 panel.Title = "Isolate Warnings";
             }
