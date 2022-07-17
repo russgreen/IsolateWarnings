@@ -91,7 +91,7 @@ public class cmdWarnings : IExternalCommand
                 var solidFill = new FilteredElementCollector(_doc).OfClass(typeof(FillPatternElement)).Where(q => q.Name.Contains(SolidName)).First();
 
 
-#if REVIT2018 || REVIT2019
+#if REVIT2018
                 ogs.SetProjectionFillPatternId(solidFill.Id);
                 ogs.SetProjectionFillColor(new Color(0, 255, 0));
 #else
