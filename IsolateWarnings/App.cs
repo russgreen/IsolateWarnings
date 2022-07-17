@@ -36,7 +36,7 @@ class App : IExternalApplication
         {
             panel = cachedUiCtrApp.CreateRibbonPanel(_tabName, Guid.NewGuid().ToString());
             panel.Name = "ARBG_IsolateWarnings_ExtApp";
-            panel.Title = "Isolate Warnings";
+            panel.Title = "Warnings";
         }
         catch
         {
@@ -65,15 +65,15 @@ class App : IExternalApplication
                 cachedUiCtrApp.CreateRibbonTab(_tabName);
                 panel = cachedUiCtrApp.CreateRibbonPanel(_tabName, Guid.NewGuid().ToString());
                 panel.Name = "ARBG_IsolateWarnings_ExtApp";
-                panel.Title = "Isolate Warnings";
+                panel.Title = "Warnings";
             }
             else
             {
-                panel = cachedUiCtrApp.CreateRibbonPanel("Isolate Warnings");
+                panel = cachedUiCtrApp.CreateRibbonPanel("Warnings");
             }
         }
 
-        PushButtonData pbData = new PushButtonData("Isolate Warnings", "Isolate Warnings", Assembly.GetExecutingAssembly().Location, "IsolateWarnings.cmdWarnings");
+        PushButtonData pbData = new PushButtonData("Isolate Warnings", $"Isolate{System.Environment.NewLine}Warnings", Assembly.GetExecutingAssembly().Location, "IsolateWarnings.cmdWarnings");
         PushButton pb = (PushButton)panel.AddItem(pbData);
         pb.ToolTip = "Isolate elements with warnings in Revit";
         pb.LargeImage = PngImageSource("IsolateWarnings.Images.Warnings32.png");
