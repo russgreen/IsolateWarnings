@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   
   <PropertyGroup>
-	  <!--<Configurations>2018;2019;2020;2021;2022;2023</Configurations>-->
-	  <Configurations>Debug R18;Debug R19;Debug R20;Debug R21;Debug R22;Debug R23</Configurations>
-	  <Configurations>$(Configurations);Release R18;Release R19;Release R20;Release R21;Release R22;Release R23</Configurations>
+	  <Configurations>Debug R19;Debug R20;Debug R21;Debug R22;Debug R23;Debug R24</Configurations>
+	  <Configurations>$(Configurations);Release R19;Release R20;Release R21;Release R22;Release R23;Release R24</Configurations>
 	  <Platforms>x64</Platforms>
 	  <Description>Isolate elements with warnings in Revit</Description>
 	  <Copyright>Copyright © Russell Green</Copyright>
@@ -21,11 +20,6 @@
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 
-  <PropertyGroup Condition="$(Configuration.Contains('R18'))">
-    <TargetFramework>net461</TargetFramework>
-	  <RevitVersion>2018</RevitVersion>
-	  <DefineConstants>$(DefineConstants);REVIT2018;PREFORGETYPEID</DefineConstants>
-  </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.Contains('R19'))">
     <TargetFramework>net47</TargetFramework>
 	  <RevitVersion>2019</RevitVersion>
@@ -51,8 +45,15 @@
     <TargetFramework>net48</TargetFramework>
 	  <RevitVersion>2023</RevitVersion>
 	  <DefineConstants>$(DefineConstants);REVIT2023</DefineConstants>
-	  <DefineConstants>$(DefineConstants);REVIT2023_OR_GREATER</DefineConstants>
+	  <DefineConstants>$(DefineConstants);REVIT2022_OR_GREATER;REVIT2023_OR_GREATER</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="$(Configuration.Contains('R24'))">
+    <TargetFramework>net48</TargetFramework>
+	  <RevitVersion>2024</RevitVersion>
+	  <DefineConstants>$(DefineConstants);REVIT2024</DefineConstants>
+	  <DefineConstants>$(DefineConstants);REVIT2022_OR_GREATER;REVIT2023_OR_GREATER;REVIT2024_OR_GREATER</DefineConstants>
+  </PropertyGroup>	
+	
 
   <PropertyGroup>
       <!-- Define handy symbols to use in the code in order to accommodate different Revit versions,
