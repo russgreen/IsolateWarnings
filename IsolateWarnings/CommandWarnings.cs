@@ -8,7 +8,7 @@ using System.Linq;
 namespace IsolateWarnings;
 
 [Transaction(TransactionMode.Manual)]
-public class cmdWarnings : IExternalCommand
+public class CommandWarnings : IExternalCommand
 {
     private UIApplication _uiapp;
     private UIDocument _uidoc;

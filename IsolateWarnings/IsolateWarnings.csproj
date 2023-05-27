@@ -6,7 +6,7 @@
 	  <Platforms>x64</Platforms>
 	  <Description>Isolate elements with warnings in Revit</Description>
 	  <Copyright>Copyright © Russell Green</Copyright>
-	  <Version>3.2</Version>
+	  <Version>3.4</Version>
 	  <LangVersion>latest</LangVersion>
   </PropertyGroup>
 

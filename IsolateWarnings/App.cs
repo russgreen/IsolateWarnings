@@ -12,8 +12,6 @@ class App : IExternalApplication
 {
     public static UIControlledApplication cachedUiCtrApp;
 
-    private readonly string _tabName = "RG Tools";
-
     public Result OnShutdown(UIControlledApplication application)
     {
         return Result.Succeeded;
@@ -22,6 +20,7 @@ class App : IExternalApplication
     public Result OnStartup(UIControlledApplication application)
     {
         cachedUiCtrApp = application;
+
         var ribbonPanel = CreateRibbonPanel();
 
         return Result.Succeeded;
@@ -30,57 +29,20 @@ class App : IExternalApplication
     private RibbonPanel CreateRibbonPanel()
     {
         RibbonPanel panel;
-
-        //Check if "Archisoft Tools" already exists and use if its there
-        try
-        {
-            panel = cachedUiCtrApp.CreateRibbonPanel(_tabName, Guid.NewGuid().ToString());
-            panel.Name = "ARBG_IsolateWarnings_ExtApp";
-            panel.Title = "Warnings";
-        }
-        catch
-        {
-            var archisoftPanel = false;
-            var pluginPath = @"C:\ProgramData\Autodesk\ApplicationPlugins";
-            if (System.IO.Directory.Exists(pluginPath) == true)
-            {
-                foreach (var folder in System.IO.Directory.GetDirectories(pluginPath))
-                {
-                    if (folder.ToLower().Contains("archisoft") == true & folder.ToLower().Contains("archisoft isolate warnings") == false)
-                    {
-                        archisoftPanel = true;
-                        break;
-                    }
-
-                    if (folder.ToLower().Contains("rg") == true & folder.ToLower().Contains("rg isolate warnings") == false)
-                    {
-                        archisoftPanel = true;
-                        break;
-                    }
-                }
-            }
-
-            if (archisoftPanel == true)
-            {
-                cachedUiCtrApp.CreateRibbonTab(_tabName);
-                panel = cachedUiCtrApp.CreateRibbonPanel(_tabName, Guid.NewGuid().ToString());
-                panel.Name = "ARBG_IsolateWarnings_ExtApp";
-                panel.Title = "Warnings";
-            }
-            else
-            {
-                panel = cachedUiCtrApp.CreateRibbonPanel("Warnings");
-            }
-        }
-
-        PushButtonData pbData = new PushButtonData("Isolate Warnings", $"Isolate{System.Environment.NewLine}Warnings", Assembly.GetExecutingAssembly().Location, "IsolateWarnings.cmdWarnings");
-        PushButton pb = (PushButton)panel.AddItem(pbData);
-        pb.ToolTip = "Isolate elements with warnings in Revit";
-        pb.LargeImage = PngImageSource("IsolateWarnings.Images.Warnings32.png");
+        panel = cachedUiCtrApp.CreateRibbonPanel(nameof(IsolateWarnings));
+        panel.Title = "Warnings";
+ 
+        PushButton pushButton = (PushButton)panel.AddItem(
+            new PushButtonData("Isolate Warnings", 
+            $"Isolate{System.Environment.NewLine}Warnings", 
+            Assembly.GetExecutingAssembly().Location,
+            $"{nameof(IsolateWarnings)}.{nameof(IsolateWarnings.CommandWarnings)}"));
+        pushButton.ToolTip = "Isolate elements with warnings in Revit";
+        pushButton.LargeImage = PngImageSource("IsolateWarnings.Images.Warnings32.png");
 
 
         ContextualHelp contextHelp = new ContextualHelp(ContextualHelpType.Url, @"https://github.com/russgreen/IsolateWarnings/wiki");
-        pb.SetContextualHelp(contextHelp);
+        pushButton.SetContextualHelp(contextHelp);
 
         return panel;
     }

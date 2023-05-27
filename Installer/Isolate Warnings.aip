@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="20.5" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="20.6" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
   <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
     <ROW Name="HiddenItems" Value="AppXAppDetailsComponent;FixupComponent;AppXCapabilitiesComponent;AppXDependenciesComponent;AppXProductDetailsComponent;AppXVisualAssetsComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
   </COMPONENT>
@@ -9,10 +9,10 @@
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="Warnings.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Russell Green"/>
-    <ROW Property="ProductCode" Value="1033:{78699DE9-36D2-4E91-9A1D-01E7E5484154} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{AFED309C-D5D5-4C03-8823-6E64D5B0E607} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Isolate Warnings"/>
-    <ROW Property="ProductVersion" Value="3.3"/>
+    <ROW Property="ProductVersion" Value="3.4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{F04F085F-5478-481E-B50C-946A19EEF10F}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
