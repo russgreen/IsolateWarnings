@@ -80,28 +80,11 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<!--<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*" />
-		<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*" />
-		<PackageReference Include="Nice3point.Revit.Api.AdWindows" Version="$(RevitVersion).*" />-->		
+		<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-*" />
+		<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*-*" />
+		<PackageReference Include="Nice3point.Revit.Api.AdWindows" Version="$(RevitVersion).*-*" />		
 		<!--<PackageReference Include="Nice3point.Revit.Extensions" Version="$(RevitVersion).*"/>-->
 	</ItemGroup>
-
-	<Choose>
-		<When Condition="$(Configuration.Contains('R25'))">
-			<ItemGroup>
-				<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-preview.*" />
-				<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*-preview.*" />
-				<PackageReference Include="Nice3point.Revit.Api.AdWindows" Version="$(RevitVersion).*-preview.*" />
-			</ItemGroup>
-		</When>
-		<Otherwise>
-			<ItemGroup>
-				<PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*-*" />
-				<PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*-*" />
-				<PackageReference Include="Nice3point.Revit.Api.AdWindows" Version="$(RevitVersion).*-*" />
-			</ItemGroup>
-		</Otherwise>
-	</Choose>
 
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -114,9 +97,9 @@
     <None Update="Warnings.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  <!-- Build debug manifest at build time -->
   </ItemGroup>
 
-  <!-- Build debug manifest at build time -->
   <Target Name="CreateAddinManifest" AfterTargets="AfterBuild">
     <ItemGroup>
       <AddinManifest Include="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\Warnings.addin" />
