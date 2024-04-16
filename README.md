@@ -3,7 +3,7 @@
 ![Revit Version](https://img.shields.io/badge/Revit%20Version-2021_--_2024-blue.svg) ![.NET](https://img.shields.io/badge/.NET-4.8-blue.svg) <br>
 ![Revit Version](https://img.shields.io/badge/Revit%20Version-2025-blue.svg) ![.NET](https://img.shields.io/badge/.NET-8-blue.svg) 
 
-![GitHub last commit](https://img.shields.io/github/last-commit/russgreen/IsolateWarnings) ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/russgreen/IsolateWarnings/total)
+![GitHub last commit](https://img.shields.io/github/last-commit/russgreen/IsolateWarnings) 
 
 Isolate elements with warnings in Autodesk® Revit® 
 
