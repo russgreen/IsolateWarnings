@@ -57,6 +57,11 @@ partial class Build
 
         var process = Process.Start(p);
         process.WaitForExit();
+
+        if (process.ExitCode != 0)
+        {
+            throw new Exception("Advanced Installer CLI failed.");
+        }
     }
 
     static string GetAdvancedInstallerPath()
