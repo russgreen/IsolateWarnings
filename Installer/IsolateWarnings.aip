@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="21.4" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
-  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
-    <ROW Name="HiddenItems" Value="AppXAppDetailsComponent;FixupComponent;AppXCapabilitiesComponent;AppXDependenciesComponent;AppXProductDetailsComponent;AppXVisualAssetsComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;MsiXDiffComponent;MsixManifestEditorComponent"/>
-  </COMPONENT>
+<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="22.2" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="Warnings.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Russell Green"/>
-    <ROW Property="ProductCode" Value="1033:{6E45291B-5C0B-44B5-9C29-157CB2945042} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{322E96CF-0209-433D-BC30-43BE0FBEEA0C} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Isolate Warnings"/>
-    <ROW Property="ProductVersion" Value="3.4" Options="32"/>
+    <ROW Property="ProductVersion" Value="3.5" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{F04F085F-5478-481E-B50C-946A19EEF10F}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -32,33 +29,85 @@
     <ROW Directory="ApplicationPlugins_Dir" Directory_Parent="Autodesk_Dir" DefaultDir="APPLIC~1|ApplicationPlugins"/>
     <ROW Directory="Autodesk_Dir" Directory_Parent="CommonAppDataFolder" DefaultDir="Autodesk"/>
     <ROW Directory="CommonAppDataFolder" Directory_Parent="TARGETDIR" DefaultDir="COMMON~1|CommonAppDataFolder" IsPseudoRoot="1"/>
+    <ROW Directory="IsolateWarnings_1_Dir" Directory_Parent="__4_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
+    <ROW Directory="IsolateWarnings_2_Dir" Directory_Parent="NewFolder_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
+    <ROW Directory="IsolateWarnings_3_Dir" Directory_Parent="__5_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
+    <ROW Directory="IsolateWarnings_4_Dir" Directory_Parent="__6_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
+    <ROW Directory="IsolateWarnings_Dir" Directory_Parent="__3_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
     <ROW Directory="NewFolder_Dir" Directory_Parent="Addins_Dir" DefaultDir="2024"/>
     <ROW Directory="Revit_Dir" Directory_Parent="Autodesk_Dir" DefaultDir="Revit"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
-    <ROW Directory="__1_Dir" Directory_Parent="Addins_Dir" DefaultDir="2020"/>
-    <ROW Directory="__2_Dir" Directory_Parent="Addins_Dir" DefaultDir="2021"/>
     <ROW Directory="__3_Dir" Directory_Parent="Addins_Dir" DefaultDir="2022"/>
     <ROW Directory="__4_Dir" Directory_Parent="Addins_Dir" DefaultDir="2023"/>
     <ROW Directory="__5_Dir" Directory_Parent="Addins_Dir" DefaultDir="2025"/>
-    <ROW Directory="__Dir" Directory_Parent="Addins_Dir" DefaultDir="2019"/>
+    <ROW Directory="__6_Dir" Directory_Parent="Addins_Dir" DefaultDir="2026"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{CC55D69B-B55D-4D44-8907-996229B4E66B}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="ApplicationPlugins" ComponentId="{E9138D4E-992C-4666-BF28-DB27F1CE815D}" Directory_="ApplicationPlugins_Dir" Attributes="0"/>
-    <ROW Component="ExportSchedule.addin" ComponentId="{5EAAE4FB-2B8B-48ED-A94D-BF60FF03297C}" Directory_="__Dir" Attributes="0" KeyPath="Warnings.addin" Type="0"/>
-    <ROW Component="ExportSchedule.addin_1" ComponentId="{F5500DCA-C43E-4443-980D-6B8A89081D26}" Directory_="__1_Dir" Attributes="0" KeyPath="Warnings.addin_1" Type="0"/>
-    <ROW Component="ExportSchedule.addin_2" ComponentId="{08FC7B1C-E032-4FFC-B5E2-A6AE2B374BDC}" Directory_="__2_Dir" Attributes="0" KeyPath="Warnings.addin_2" Type="0"/>
+    <ROW Component="CommunityToolkit.Mvvm.dll" ComponentId="{25AA543F-1BAA-48D6-916C-41ED3C1248AC}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="CommunityToolkit.Mvvm.dll"/>
+    <ROW Component="CommunityToolkit.Mvvm.dll_1" ComponentId="{70A26EB1-9AF7-4366-819F-2935F183A692}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="CommunityToolkit.Mvvm.dll_1"/>
+    <ROW Component="CommunityToolkit.Mvvm.dll_2" ComponentId="{93780A81-8F9E-4DBF-8668-D98BF07AAE5F}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="CommunityToolkit.Mvvm.dll_2"/>
+    <ROW Component="CommunityToolkit.Mvvm.dll_3" ComponentId="{599C28FD-30CF-42ED-A4A2-EE67621B8FDF}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="CommunityToolkit.Mvvm.dll_3"/>
+    <ROW Component="CommunityToolkit.Mvvm.dll_4" ComponentId="{9343A211-180D-4E8D-A087-E85B0585B213}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="CommunityToolkit.Mvvm.dll_4"/>
     <ROW Component="ExportSchedule.addin_3" ComponentId="{4BFD229C-D632-45D5-98F4-64CA31A43B99}" Directory_="__3_Dir" Attributes="0" KeyPath="Warnings.addin_3" Type="0"/>
     <ROW Component="ExportSchedule.addin_4" ComponentId="{27F656E1-4B59-4ADE-BEBB-A5CA4A1B9211}" Directory_="__4_Dir" Attributes="0" KeyPath="Warnings.addin_4" Type="0"/>
-    <ROW Component="IsolateWarnings.deps.json" ComponentId="{C4E7581D-2946-410D-B10B-0C6FEFCE6D6B}" Directory_="__5_Dir" Attributes="0" KeyPath="IsolateWarnings.deps.json" Type="0"/>
-    <ROW Component="IsolateWarnings.dll" ComponentId="{7CD054AA-D8BF-4A53-816A-48C01BFF369E}" Directory_="__Dir" Attributes="256" KeyPath="IsolateWarnings.dll"/>
-    <ROW Component="IsolateWarnings.dll_1" ComponentId="{5DC3B9FE-A2B3-4DC5-9C48-88E630534FAB}" Directory_="__1_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_1"/>
-    <ROW Component="IsolateWarnings.dll_2" ComponentId="{5620E018-BD3F-42A5-A560-D45E21AAED9B}" Directory_="__2_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_2"/>
-    <ROW Component="IsolateWarnings.dll_3" ComponentId="{4E3598C9-5685-4B24-B526-5B25629A28F7}" Directory_="__3_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_3"/>
-    <ROW Component="IsolateWarnings.dll_4" ComponentId="{F98DE786-547E-4603-8514-FCB93BDE53CD}" Directory_="__4_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_4"/>
-    <ROW Component="IsolateWarnings.dll_5" ComponentId="{3ED8EAFC-F9A2-4228-8161-F4AE4D5AEE38}" Directory_="__5_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_5"/>
-    <ROW Component="IsolateWarnings.dll_6" ComponentId="{390AAE85-0067-48CF-92B8-60BE35208AE6}" Directory_="NewFolder_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_6"/>
+    <ROW Component="IsolateWarnings.deps.json" ComponentId="{C4E7581D-2946-410D-B10B-0C6FEFCE6D6B}" Directory_="__5_Dir" Attributes="0" KeyPath="Warnings.addin_5" Type="0"/>
+    <ROW Component="IsolateWarnings.deps.json_1" ComponentId="{6C17CA90-2CC0-4F31-BDC4-CBB0D1F411D4}" Directory_="__6_Dir" Attributes="0" KeyPath="Warnings.addin" Type="0"/>
+    <ROW Component="IsolateWarnings.deps.json_2" ComponentId="{9FE6223D-BA23-4258-A652-3877EB2FBF53}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="IsolateWarnings.deps.json" Type="0"/>
+    <ROW Component="IsolateWarnings.deps.json_3" ComponentId="{F4073B47-EE46-4624-9944-9D5CB01ED17C}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="IsolateWarnings.deps.json_2" Type="0"/>
+    <ROW Component="IsolateWarnings.dll" ComponentId="{945FDACE-C63C-4A94-AD45-ADBBD6FE3102}" Directory_="IsolateWarnings_Dir" Attributes="256" KeyPath="IsolateWarnings.dll"/>
+    <ROW Component="IsolateWarnings.dll_1" ComponentId="{609BE613-CE26-4CEB-9E90-7F19AFF8F60A}" Directory_="IsolateWarnings_1_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_1"/>
+    <ROW Component="IsolateWarnings.dll_2" ComponentId="{03A366C4-AE64-4F1A-B79A-AAFA5DB142DE}" Directory_="IsolateWarnings_2_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_2"/>
+    <ROW Component="IsolateWarnings.dll_3" ComponentId="{A0731C41-8780-479B-9A4C-44F4ACB1FAEF}" Directory_="IsolateWarnings_3_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_3"/>
+    <ROW Component="IsolateWarnings.dll_4" ComponentId="{9E01581D-BB07-4250-8679-D999B44DFBD8}" Directory_="IsolateWarnings_4_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_4"/>
+    <ROW Component="Microsoft.Bcl.AsyncInterfaces.dll" ComponentId="{B2306174-0FFF-42DC-9E1C-732DBA1B4FC5}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Microsoft.Bcl.AsyncInterfaces.dll"/>
+    <ROW Component="Microsoft.Bcl.AsyncInterfaces.dll_1" ComponentId="{C47DCACA-8D60-4F71-9D51-45375AEA40BC}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Microsoft.Bcl.AsyncInterfaces.dll_1"/>
+    <ROW Component="Microsoft.Bcl.AsyncInterfaces.dll_2" ComponentId="{5C572CBE-0E74-47D0-94AF-0AA49D83124C}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Microsoft.Bcl.AsyncInterfaces.dll_2"/>
+    <ROW Component="Microsoft.Xaml.Behaviors.dll" ComponentId="{94CC2ED2-0B2C-4787-8EA8-98A3EDDF8040}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Microsoft.Xaml.Behaviors.dll"/>
+    <ROW Component="Microsoft.Xaml.Behaviors.dll_1" ComponentId="{A5DA9AA1-EAB2-4134-A978-FD692881183E}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Microsoft.Xaml.Behaviors.dll_1"/>
+    <ROW Component="Microsoft.Xaml.Behaviors.dll_2" ComponentId="{43629310-8577-4770-819D-D8137A0BC655}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Microsoft.Xaml.Behaviors.dll_2"/>
+    <ROW Component="Microsoft.Xaml.Behaviors.dll_3" ComponentId="{C7FCB284-98D6-4811-8FA5-20F19AAAFC1E}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Microsoft.Xaml.Behaviors.dll_3"/>
+    <ROW Component="Microsoft.Xaml.Behaviors.dll_4" ComponentId="{FEFF289D-2AE7-4BC4-A026-2A3CA0184247}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Microsoft.Xaml.Behaviors.dll_4"/>
     <ROW Component="ProductInformation" ComponentId="{A45F939A-A1D5-4C15-8D1F-55EA1FF9901F}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
+    <ROW Component="Syncfusion.Data.WPF.dll" ComponentId="{EDF5580A-0E75-41FB-9485-D726C2B1FA9A}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll"/>
+    <ROW Component="Syncfusion.Data.WPF.dll_1" ComponentId="{844CF4C6-C5D3-49DF-A3F5-BBFADDE2B0AC}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_1"/>
+    <ROW Component="Syncfusion.Data.WPF.dll_2" ComponentId="{EAD6BAA1-903A-4653-938F-91FC242B52DF}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_2"/>
+    <ROW Component="Syncfusion.Data.WPF.dll_3" ComponentId="{A51BC27C-AA6D-433D-B019-3A46564CABC8}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_3"/>
+    <ROW Component="Syncfusion.Data.WPF.dll_4" ComponentId="{BE27E9B2-758B-4B81-83EB-78825098F97C}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_4"/>
+    <ROW Component="Syncfusion.Licensing.dll" ComponentId="{4203A962-43A4-4E57-9151-1D6698D96C43}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll"/>
+    <ROW Component="Syncfusion.Licensing.dll_1" ComponentId="{486CBA4A-FC00-40D2-BECE-F6ABA290F096}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_1"/>
+    <ROW Component="Syncfusion.Licensing.dll_2" ComponentId="{DB2858DD-D750-4DAA-B2C2-16DA2B127078}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_2"/>
+    <ROW Component="Syncfusion.Licensing.dll_3" ComponentId="{0A834B90-62B3-4074-9306-687B31F12BCD}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_3"/>
+    <ROW Component="Syncfusion.Licensing.dll_4" ComponentId="{656BC8B7-8A2D-44AC-8708-26A91CB36524}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_4"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll" ComponentId="{83CD22B1-6C73-47BC-932B-5CEF37822079}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll_1" ComponentId="{E10184B2-DD85-4437-AC7D-D430AF044077}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_1"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll_2" ComponentId="{14613769-FF2F-42BD-956F-32661419176F}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_2"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll_3" ComponentId="{541DB6A1-4AFB-402C-973B-F58277DF621B}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_3"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll_4" ComponentId="{F725BBF3-9C56-4D89-A0AA-412CF778BA96}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_4"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll" ComponentId="{7289B8CE-9B34-4BD5-81E7-CA428DCB4BC3}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll_1" ComponentId="{A6C8D198-1B39-4B74-B011-318FE49B90FA}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_1"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll_2" ComponentId="{73AE901D-CEDA-4F2C-9D0E-842BC6C51532}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_2"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll_3" ComponentId="{E9539340-1040-4C0D-BDD3-0C00E518FBC7}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_3"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll_4" ComponentId="{DAC2152B-F589-4750-B518-E8D746CE94B5}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_4"/>
+    <ROW Component="System.Buffers.dll" ComponentId="{AD83452E-EF45-4889-9B0D-5DD3C71D072E}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="System.Buffers.dll"/>
+    <ROW Component="System.Buffers.dll_1" ComponentId="{CE00BB77-29D4-43F7-AFDC-37FA8AD63B1E}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="System.Buffers.dll_1"/>
+    <ROW Component="System.Buffers.dll_2" ComponentId="{ED6219A5-775B-48F3-AA23-225999A32DE2}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="System.Buffers.dll_2"/>
+    <ROW Component="System.ComponentModel.Annotations.dll" ComponentId="{D3F65BB1-EAEB-4948-8096-20388641059C}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="System.ComponentModel.Annotations.dll"/>
+    <ROW Component="System.ComponentModel.Annotations.dll_1" ComponentId="{A9255C68-AB56-4838-BF06-0DAD2B2AF333}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="System.ComponentModel.Annotations.dll_1"/>
+    <ROW Component="System.ComponentModel.Annotations.dll_2" ComponentId="{C6A40B0A-57EC-4562-A716-F2CA8F269DE0}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="System.ComponentModel.Annotations.dll_2"/>
+    <ROW Component="System.Memory.dll" ComponentId="{72868EBB-23D6-49A6-AB31-117BFFF5A523}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="System.Memory.dll"/>
+    <ROW Component="System.Memory.dll_1" ComponentId="{F8E9A17D-6A79-4E51-92E9-7273C8D6240F}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="System.Memory.dll_1"/>
+    <ROW Component="System.Memory.dll_2" ComponentId="{E7A4C465-5F25-4361-8EB8-FFA1DD561970}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="System.Memory.dll_2"/>
+    <ROW Component="System.Numerics.Vectors.dll" ComponentId="{A058E88E-F1BE-4B26-9823-FC4E5C989038}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="System.Numerics.Vectors.dll"/>
+    <ROW Component="System.Numerics.Vectors.dll_1" ComponentId="{987EF34D-88AB-4CC5-84D8-33888BF58E7E}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="System.Numerics.Vectors.dll_1"/>
+    <ROW Component="System.Numerics.Vectors.dll_2" ComponentId="{7633F728-F896-4003-9A1E-7AF01E7DF8CE}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="System.Numerics.Vectors.dll_2"/>
+    <ROW Component="System.Runtime.CompilerServices.Un_1_safe.dll" ComponentId="{4B22715E-ED6B-491F-A833-D7844750C711}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="System.Runtime.CompilerServices.Un_1_safe.dll"/>
+    <ROW Component="System.Runtime.CompilerServices.Un_2_safe.dll" ComponentId="{9CD25E60-A13D-40A3-8C6F-43AFA96BF238}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="System.Runtime.CompilerServices.Un_2_safe.dll"/>
+    <ROW Component="System.Runtime.CompilerServices.Unsafe.dll" ComponentId="{28C135EB-33F9-4114-9BAE-FB1FAC5211C2}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="System.Runtime.CompilerServices.Unsafe.dll"/>
+    <ROW Component="System.Threading.Tasks.Extensions.dll" ComponentId="{9D6527F7-E041-4B08-B754-774AD9771B4A}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="System.Threading.Tasks.Extensions.dll"/>
+    <ROW Component="System.Threading.Tasks.Extensions.dll_1" ComponentId="{7AD9B768-3F2C-4AE7-8756-A7120877C97E}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="System.Threading.Tasks.Extensions.dll_1"/>
+    <ROW Component="System.Threading.Tasks.Extensions.dll_2" ComponentId="{225D4530-5C1B-4288-AD8E-85207B8FF396}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="System.Threading.Tasks.Extensions.dll_2"/>
     <ROW Component="Warnings.addin_1" ComponentId="{5DA9AA1E-7EF9-43A2-91EB-F2612D9E2639}" Directory_="NewFolder_Dir" Attributes="0" KeyPath="Warnings.addin_6" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
@@ -66,21 +115,69 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="IsolateWarnings.dll" Component_="IsolateWarnings.dll" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R19\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin" Component_="ExportSchedule.addin" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R19\Warnings.addin" SelfReg="false"/>
-    <ROW File="IsolateWarnings.dll_1" Component_="IsolateWarnings.dll_1" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R20\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin_1" Component_="ExportSchedule.addin_1" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R20\Warnings.addin" SelfReg="false"/>
-    <ROW File="IsolateWarnings.dll_2" Component_="IsolateWarnings.dll_2" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R21\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin_2" Component_="ExportSchedule.addin_2" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R21\Warnings.addin" SelfReg="false"/>
-    <ROW File="IsolateWarnings.dll_3" Component_="IsolateWarnings.dll_3" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin_3" Component_="ExportSchedule.addin_3" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Warnings.addin" SelfReg="false"/>
-    <ROW File="IsolateWarnings.dll_4" Component_="IsolateWarnings.dll_4" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin_4" Component_="ExportSchedule.addin_4" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Warnings.addin" SelfReg="false"/>
-    <ROW File="IsolateWarnings.dll_6" Component_="IsolateWarnings.dll_6" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin_6" Component_="Warnings.addin_1" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Warnings.addin" SelfReg="false"/>
-    <ROW File="IsolateWarnings.deps.json" Component_="IsolateWarnings.deps.json" FileName="ISOLAT~1.JSO|IsolateWarnings.deps.json" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\IsolateWarnings.deps.json" SelfReg="false"/>
-    <ROW File="IsolateWarnings.dll_5" Component_="IsolateWarnings.dll_5" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\IsolateWarnings.dll" SelfReg="false"/>
-    <ROW File="Warnings.addin_5" Component_="IsolateWarnings.deps.json" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\Warnings.addin" SelfReg="false"/>
+    <ROW File="Warnings.addin_3" Component_="ExportSchedule.addin_3" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\Warnings.addin" SelfReg="false"/>
+    <ROW File="Warnings.addin_4" Component_="ExportSchedule.addin_4" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\Warnings.addin" SelfReg="false"/>
+    <ROW File="Warnings.addin_6" Component_="Warnings.addin_1" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\Warnings.addin" SelfReg="false"/>
+    <ROW File="Warnings.addin_5" Component_="IsolateWarnings.deps.json" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\Warnings.addin" SelfReg="false"/>
+    <ROW File="Warnings.addin" Component_="IsolateWarnings.deps.json_1" FileName="WARNIN~1.ADD|Warnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\Warnings.addin" SelfReg="false"/>
+    <ROW File="CommunityToolkit.Mvvm.dll" Component_="CommunityToolkit.Mvvm.dll" FileName="COMMUN~1.DLL|CommunityToolkit.Mvvm.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\CommunityToolkit.Mvvm.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings.dll" Component_="IsolateWarnings.dll" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\IsolateWarnings.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Bcl.AsyncInterfaces.dll" Component_="Microsoft.Bcl.AsyncInterfaces.dll" FileName="MICROS~1.DLL|Microsoft.Bcl.AsyncInterfaces.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Microsoft.Bcl.AsyncInterfaces.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Xaml.Behaviors.dll" Component_="Microsoft.Xaml.Behaviors.dll" FileName="MICROS~2.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll" Component_="Syncfusion.Data.WPF.dll" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll" Component_="Syncfusion.Licensing.dll" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll" Component_="Syncfusion.SfGrid.WPF.dll" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll" Component_="Syncfusion.Shared.WPF.dll" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
+    <ROW File="System.Buffers.dll" Component_="System.Buffers.dll" FileName="SYSTEM~1.DLL|System.Buffers.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\System.Buffers.dll" SelfReg="false"/>
+    <ROW File="System.ComponentModel.Annotations.dll" Component_="System.ComponentModel.Annotations.dll" FileName="SYSTEM~2.DLL|System.ComponentModel.Annotations.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\System.ComponentModel.Annotations.dll" SelfReg="false"/>
+    <ROW File="System.Memory.dll" Component_="System.Memory.dll" FileName="SYSTEM~3.DLL|System.Memory.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\System.Memory.dll" SelfReg="false"/>
+    <ROW File="System.Numerics.Vectors.dll" Component_="System.Numerics.Vectors.dll" FileName="SYSTEM~4.DLL|System.Numerics.Vectors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\System.Numerics.Vectors.dll" SelfReg="false"/>
+    <ROW File="System.Runtime.CompilerServices.Unsafe.dll" Component_="System.Runtime.CompilerServices.Unsafe.dll" FileName="SYSTEM~5.DLL|System.Runtime.CompilerServices.Unsafe.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\System.Runtime.CompilerServices.Unsafe.dll" SelfReg="false"/>
+    <ROW File="System.Threading.Tasks.Extensions.dll" Component_="System.Threading.Tasks.Extensions.dll" FileName="SYSTEM~6.DLL|System.Threading.Tasks.Extensions.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R22\System.Threading.Tasks.Extensions.dll" SelfReg="false"/>
+    <ROW File="CommunityToolkit.Mvvm.dll_1" Component_="CommunityToolkit.Mvvm.dll_1" FileName="COMMUN~1.DLL|CommunityToolkit.Mvvm.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\CommunityToolkit.Mvvm.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings.dll_1" Component_="IsolateWarnings.dll_1" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\IsolateWarnings.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Bcl.AsyncInterfaces.dll_1" Component_="Microsoft.Bcl.AsyncInterfaces.dll_1" FileName="MICROS~1.DLL|Microsoft.Bcl.AsyncInterfaces.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Microsoft.Bcl.AsyncInterfaces.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Xaml.Behaviors.dll_1" Component_="Microsoft.Xaml.Behaviors.dll_1" FileName="MICROS~2.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll_1" Component_="Syncfusion.Data.WPF.dll_1" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll_1" Component_="Syncfusion.Licensing.dll_1" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll_1" Component_="Syncfusion.SfGrid.WPF.dll_1" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll_1" Component_="Syncfusion.Shared.WPF.dll_1" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
+    <ROW File="System.Buffers.dll_1" Component_="System.Buffers.dll_1" FileName="SYSTEM~1.DLL|System.Buffers.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\System.Buffers.dll" SelfReg="false"/>
+    <ROW File="System.ComponentModel.Annotations.dll_1" Component_="System.ComponentModel.Annotations.dll_1" FileName="SYSTEM~2.DLL|System.ComponentModel.Annotations.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\System.ComponentModel.Annotations.dll" SelfReg="false"/>
+    <ROW File="System.Memory.dll_1" Component_="System.Memory.dll_1" FileName="SYSTEM~3.DLL|System.Memory.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\System.Memory.dll" SelfReg="false"/>
+    <ROW File="System.Numerics.Vectors.dll_1" Component_="System.Numerics.Vectors.dll_1" FileName="SYSTEM~4.DLL|System.Numerics.Vectors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\System.Numerics.Vectors.dll" SelfReg="false"/>
+    <ROW File="System.Runtime.CompilerServices.Un_1_safe.dll" Component_="System.Runtime.CompilerServices.Un_1_safe.dll" FileName="SYSTEM~5.DLL|System.Runtime.CompilerServices.Unsafe.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\System.Runtime.CompilerServices.Unsafe.dll" SelfReg="false"/>
+    <ROW File="System.Threading.Tasks.Extensions.dll_1" Component_="System.Threading.Tasks.Extensions.dll_1" FileName="SYSTEM~6.DLL|System.Threading.Tasks.Extensions.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R23\System.Threading.Tasks.Extensions.dll" SelfReg="false"/>
+    <ROW File="CommunityToolkit.Mvvm.dll_2" Component_="CommunityToolkit.Mvvm.dll_2" FileName="COMMUN~1.DLL|CommunityToolkit.Mvvm.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\CommunityToolkit.Mvvm.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings.dll_2" Component_="IsolateWarnings.dll_2" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\IsolateWarnings.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Bcl.AsyncInterfaces.dll_2" Component_="Microsoft.Bcl.AsyncInterfaces.dll_2" FileName="MICROS~1.DLL|Microsoft.Bcl.AsyncInterfaces.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Microsoft.Bcl.AsyncInterfaces.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Xaml.Behaviors.dll_2" Component_="Microsoft.Xaml.Behaviors.dll_2" FileName="MICROS~2.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll_2" Component_="Syncfusion.Data.WPF.dll_2" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll_2" Component_="Syncfusion.Licensing.dll_2" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll_2" Component_="Syncfusion.SfGrid.WPF.dll_2" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll_2" Component_="Syncfusion.Shared.WPF.dll_2" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
+    <ROW File="System.Buffers.dll_2" Component_="System.Buffers.dll_2" FileName="SYSTEM~1.DLL|System.Buffers.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\System.Buffers.dll" SelfReg="false"/>
+    <ROW File="System.ComponentModel.Annotations.dll_2" Component_="System.ComponentModel.Annotations.dll_2" FileName="SYSTEM~2.DLL|System.ComponentModel.Annotations.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\System.ComponentModel.Annotations.dll" SelfReg="false"/>
+    <ROW File="System.Memory.dll_2" Component_="System.Memory.dll_2" FileName="SYSTEM~3.DLL|System.Memory.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\System.Memory.dll" SelfReg="false"/>
+    <ROW File="System.Numerics.Vectors.dll_2" Component_="System.Numerics.Vectors.dll_2" FileName="SYSTEM~4.DLL|System.Numerics.Vectors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\System.Numerics.Vectors.dll" SelfReg="false"/>
+    <ROW File="System.Runtime.CompilerServices.Un_2_safe.dll" Component_="System.Runtime.CompilerServices.Un_2_safe.dll" FileName="SYSTEM~5.DLL|System.Runtime.CompilerServices.Unsafe.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\System.Runtime.CompilerServices.Unsafe.dll" SelfReg="false"/>
+    <ROW File="System.Threading.Tasks.Extensions.dll_2" Component_="System.Threading.Tasks.Extensions.dll_2" FileName="SYSTEM~6.DLL|System.Threading.Tasks.Extensions.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R24\System.Threading.Tasks.Extensions.dll" SelfReg="false"/>
+    <ROW File="CommunityToolkit.Mvvm.dll_3" Component_="CommunityToolkit.Mvvm.dll_3" FileName="COMMUN~1.DLL|CommunityToolkit.Mvvm.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\CommunityToolkit.Mvvm.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings.deps.json" Component_="IsolateWarnings.deps.json_2" FileName="ISOLAT~1.JSO|IsolateWarnings.deps.json" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\IsolateWarnings.deps.json" SelfReg="false"/>
+    <ROW File="IsolateWarnings.dll_3" Component_="IsolateWarnings.dll_3" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\IsolateWarnings.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Xaml.Behaviors.dll_3" Component_="Microsoft.Xaml.Behaviors.dll_3" FileName="MICROS~1.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll_3" Component_="Syncfusion.Data.WPF.dll_3" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll_3" Component_="Syncfusion.Licensing.dll_3" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll_3" Component_="Syncfusion.SfGrid.WPF.dll_3" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll_3" Component_="Syncfusion.Shared.WPF.dll_3" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R25\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
+    <ROW File="CommunityToolkit.Mvvm.dll_4" Component_="CommunityToolkit.Mvvm.dll_4" FileName="COMMUN~1.DLL|CommunityToolkit.Mvvm.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\CommunityToolkit.Mvvm.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings.deps.json_2" Component_="IsolateWarnings.deps.json_3" FileName="ISOLAT~1.JSO|IsolateWarnings.deps.json" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\IsolateWarnings.deps.json" SelfReg="false"/>
+    <ROW File="IsolateWarnings.dll_4" Component_="IsolateWarnings.dll_4" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\IsolateWarnings.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Xaml.Behaviors.dll_4" Component_="Microsoft.Xaml.Behaviors.dll_4" FileName="MICROS~1.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll_4" Component_="Syncfusion.Data.WPF.dll_4" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll_4" Component_="Syncfusion.Licensing.dll_4" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll_4" Component_="Syncfusion.SfGrid.WPF.dll_4" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll_4" Component_="Syncfusion.Shared.WPF.dll_4" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R26\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -172,21 +269,70 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
     <ROW Feature_="MainFeature" Component_="APPDIR"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
-    <ROW Feature_="MainFeature" Component_="ExportSchedule.addin"/>
-    <ROW Feature_="MainFeature" Component_="ExportSchedule.addin_1"/>
-    <ROW Feature_="MainFeature" Component_="ExportSchedule.addin_2"/>
     <ROW Feature_="MainFeature" Component_="ApplicationPlugins"/>
     <ROW Feature_="MainFeature" Component_="ExportSchedule.addin_3"/>
     <ROW Feature_="MainFeature" Component_="ExportSchedule.addin_4"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_1"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_2"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_3"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_4"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_6"/>
+    <ROW Feature_="MainFeature" Component_="CommunityToolkit.Mvvm.dll"/>
     <ROW Feature_="MainFeature" Component_="Warnings.addin_1"/>
     <ROW Feature_="MainFeature" Component_="IsolateWarnings.deps.json"/>
-    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Bcl.AsyncInterfaces.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.deps.json_1"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Buffers.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ComponentModel.Annotations.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Memory.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Numerics.Vectors.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Runtime.CompilerServices.Unsafe.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Threading.Tasks.Extensions.dll"/>
+    <ROW Feature_="MainFeature" Component_="CommunityToolkit.Mvvm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Bcl.AsyncInterfaces.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.Buffers.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.ComponentModel.Annotations.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.Memory.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.Numerics.Vectors.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.Runtime.CompilerServices.Un_1_safe.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Threading.Tasks.Extensions.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="CommunityToolkit.Mvvm.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Bcl.AsyncInterfaces.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.Buffers.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.ComponentModel.Annotations.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.Memory.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.Numerics.Vectors.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.Runtime.CompilerServices.Un_2_safe.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Threading.Tasks.Extensions.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="CommunityToolkit.Mvvm.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.deps.json_2"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="CommunityToolkit.Mvvm.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.deps.json_3"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll_4"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll_4"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Warnings.exe" SourcePath="..\IsolateWarnings\Warnings.ico" Index="0"/>
