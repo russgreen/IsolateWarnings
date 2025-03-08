@@ -2,7 +2,7 @@
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>IsolateWarnings</Name>
-    <Assembly>IsolateWarnings.dll</Assembly>
+    <Assembly>.\IsolateWarnings\IsolateWarnings.dll</Assembly>
     <ClientId>7df8b64d-1e7a-43e4-98e9-b5811b794a66</ClientId>
     <FullClassName>IsolateWarnings.App</FullClassName>
     <VendorId>ARBG</VendorId>

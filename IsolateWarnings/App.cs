@@ -1,4 +1,5 @@
-﻿using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.Attributes;
 using Autodesk.Revit.UI;
 using System;
 using System.Reflection;
@@ -10,7 +11,11 @@ namespace IsolateWarnings;
 [Regeneration(RegenerationOption.Manual)]
 class App : IExternalApplication
 {
-    public static UIControlledApplication cachedUiCtrApp;
+    public static UIControlledApplication CachedUiCtrApp;
+    public static UIApplication CachedUiApp;
+    public static ControlledApplication CtrApp;
+
+    public static Autodesk.Revit.DB.Document RevitDocument;
 
     public Result OnShutdown(UIControlledApplication application)
     {
@@ -19,7 +24,8 @@ class App : IExternalApplication
 
     public Result OnStartup(UIControlledApplication application)
     {
-        cachedUiCtrApp = application;
+        CachedUiCtrApp = application;
+        CtrApp = application.ControlledApplication;
 
         var ribbonPanel = CreateRibbonPanel();
 
@@ -29,7 +35,7 @@ class App : IExternalApplication
     private RibbonPanel CreateRibbonPanel()
     {
         RibbonPanel panel;
-        panel = cachedUiCtrApp.CreateRibbonPanel(nameof(IsolateWarnings));
+        panel = CachedUiCtrApp.CreateRibbonPanel(nameof(IsolateWarnings));
         panel.Title = "Warnings";
  
         PushButton pushButton = (PushButton)panel.AddItem(
