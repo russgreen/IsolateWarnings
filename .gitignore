@@ -354,3 +354,4 @@ Bundle
 Installer/*.back.aip
 Installer/IsolateWarnings-cache/*
 Installer/IsolateWarnings-SetupFiles/*
+/SyncfusionKey.txt
