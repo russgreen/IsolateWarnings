@@ -13,3 +13,4 @@ The warnings in the open model are analysed and elements that are referenced in 
 
 Inspired by the code posted by Harry @  http://boostyourbim.wordpress.com/2013/09/27/rtceur-wish-2-highlight-and-isolate-warning-elements/.
 
+The UI used Syncfusion controls and so a license key should be obtained (free community versions are available). The key should be stored in a text file in the root of the repo called SyncfusionKey.txt (excluded from Git).

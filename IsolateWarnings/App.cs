@@ -1,4 +1,4 @@
-﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.UI;
 using System;
@@ -28,6 +28,9 @@ class App : IExternalApplication
         CtrApp = application.ControlledApplication;
 
         var ribbonPanel = CreateRibbonPanel();
+
+        Syncfusion.Licensing.SyncfusionLicenseProvider
+            .RegisterLicense("##SyncfusionLicense##");
 
         return Result.Succeeded;
     }
