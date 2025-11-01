@@ -1,6 +1,8 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using Serilog;
+using Serilog.Context;
 
 namespace IsolateWarnings;
 
@@ -9,6 +11,11 @@ public class CommandWarnings : IExternalCommand
 {
     public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
     {
+        using (LogContext.PushProperty("UsageTracking", true))
+        {
+            Log.Information("{command}", nameof(CommandWarnings));
+        }
+
         App.RevitDocument = commandData.Application.ActiveUIDocument.Document;
         App.CachedUiApp = commandData.Application;
 

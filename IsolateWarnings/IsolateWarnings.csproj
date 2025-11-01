@@ -6,7 +6,7 @@
 	  <Platforms>x64</Platforms>
 	  <Description>Isolate elements with warnings in Revit</Description>
 	  <Copyright>Copyright © Russell Green</Copyright>
-	  <Version>3.6</Version>
+	  <Version>3.7</Version>
 	  <PlatformTarget>x64</PlatformTarget>
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	  <LangVersion>latest</LangVersion>
@@ -31,21 +31,6 @@
 		<DebugType>none</DebugType>
 	</PropertyGroup>
 
-  <PropertyGroup Condition="$(Configuration.Contains('R19'))">
-    <TargetFramework>net47</TargetFramework>
-	  <RevitVersion>2019</RevitVersion>
-	  <DefineConstants>$(DefineConstants);REVIT2019;PREFORGETYPEID</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(Configuration.Contains('R20'))">
-    <TargetFramework>net471</TargetFramework>
-	  <RevitVersion>2020</RevitVersion>
-	  <DefineConstants>$(DefineConstants);REVIT2020;PREFORGETYPEID</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(Configuration.Contains('R21'))">
-    <TargetFramework>net48</TargetFramework>
-	  <RevitVersion>2021</RevitVersion>
-	  <DefineConstants>$(DefineConstants);REVIT2021;PREFORGETYPEID</DefineConstants>
-  </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.Contains('R22'))">
     <TargetFramework>net48</TargetFramework>
 	  <RevitVersion>2022</RevitVersion>
@@ -80,6 +65,12 @@
   <ItemGroup>
     <None Remove="Images\Warnings32.png" />
   </ItemGroup>
+	
+		<PropertyGroup>
+		<!--<IsRepackable Condition="$(Configuration.Contains('Release'))">true</IsRepackable>-->
+		<IsRepackable>true</IsRepackable>
+		<RepackBinariesExcludes>Syncfusion*.dll;e_sqlite3.dll;SQLitePCL*.dll;</RepackBinariesExcludes>
+	</PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\Warnings32.png" />
@@ -94,6 +85,22 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.*" />
 
 		<PackageReference Include="Syncfusion.SfGrid.WPF" Version="29.1.35" />
+		
+		<PackageReference Include="Serilog" Version="4.*" />
+		
+		<PackageReference Include="Serilog.Sinks.Debug" Version="3.*"  />
+		<PackageReference Include="Serilog.Sinks.File" Version="6.*"  />
+
+		<PackageReference Include="Serilog.Sinks.Async" Version="2.*" />
+
+		<PackageReference Include="Serilog.Sinks.GoogleAnalytics" Version="1.*" />
+
+		<!--Repacking-->
+		<!--<PackageVersion Include="ILRepack" Version="2.0.39" ExcludeAssets="Runtime" />-->
+		<PackageReference Include="ILRepack" Version="2.0.41">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
   <ItemGroup>
@@ -108,84 +115,6 @@
     <Folder Include="Behaviours\" />
   </ItemGroup>
 
-
-	<!--
-    =====================================================
-                         Set License Key
-    
-    Set license key for Syncfusion controls at build time
-    =====================================================
-    -->
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-		<Exec Command="cd &quot;$(SolutionDir)&quot;&#xD;&#xA;SyncfusionLicenseRegister.bat PreBuild $(ProjectDir)App.cs $(SolutionDir)SyncfusionKey.txt" />
-	</Target>
-
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="cd &quot;$(SolutionDir)&quot;&#xD;&#xA;SyncfusionLicenseRegister.bat PostBuild $(ProjectDir)App.cs $(SolutionDir)SyncfusionKey.txt" />
-	</Target>
-
-	<!--
-    ===============================================================
-                         Copy Manifest
-    
-    Target for copying the manifest file to the Revit Addins folder
-    ===============================================================
-    -->
-
-	<!-- Build debug manifest at build time -->
-	<Target Name="CreateAddinManifest" AfterTargets="AfterBuild">
-		<ItemGroup>
-			<AddinManifest Include="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\$(AssemblyName).addin" />
-		</ItemGroup>
-		<ReplaceFileText InputFilename="$(AssemblyName).addin" OutputFilename="@(AddinManifest)" MatchExpression="Assembly&gt;(.*?)&lt;" ReplacementText="Assembly&gt;$(TargetDir)$(AssemblyName).dll&lt;" />
-		<ReplaceFileText InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="&lt;VendorId&gt;(.*?)&lt;" ReplacementText="&lt;VendorId&gt;$(PackageId)&lt;" />
-		<ReplaceFileText InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="&lt;FullClassName&gt;(.*?)&lt;" ReplacementText="&lt;FullClassName&gt;$(RootNamespace).App&lt;" />
-	</Target>
-
-	<!-- Clean up debug manifest -->
-	<Target Name="CleanupAddinManifest" AfterTargets="AfterClean">
-		<Delete Files="$(AppData)\Autodesk\REVIT\Addins\$(RevitVersion)\$(AssemblyName).addin" />
-	</Target>
-
-	<UsingTask Condition="'$(MSBuildRuntimeType)' == 'Full'" TaskName="ReplaceFileText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
-		<ParameterGroup>
-			<InputFilename ParameterType="System.String" Required="true" />
-			<OutputFilename ParameterType="System.String" Required="true" />
-			<MatchExpression ParameterType="System.String" Required="true" />
-			<ReplacementText ParameterType="System.String" Required="true" />
-		</ParameterGroup>
-		<Task>
-			<Reference Include="System.Core" />
-			<Using Namespace="System" />
-			<Using Namespace="System.IO" />
-			<Using Namespace="System.Text.RegularExpressions" />
-			<Code Type="Fragment" Language="cs">
-				<![CDATA[
-              File.WriteAllText(OutputFilename,Regex.Replace(File.ReadAllText(InputFilename),MatchExpression,ReplacementText));
-        ]]>
-			</Code>
-		</Task>
-	</UsingTask>
-
-	<UsingTask Condition="'$(MSBuildRuntimeType)' == 'Core'" TaskName="ReplaceFileText" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
-		<ParameterGroup>
-			<InputFilename ParameterType="System.String" Required="true" />
-			<OutputFilename ParameterType="System.String" Required="true" />
-			<MatchExpression ParameterType="System.String" Required="true" />
-			<ReplacementText ParameterType="System.String" Required="true" />
-		</ParameterGroup>
-		<Task>
-			<Using Namespace="System" />
-			<Using Namespace="System.IO" />
-			<Using Namespace="System.Text.RegularExpressions" />
-			<Code Type="Fragment" Language="cs">
-				<![CDATA[
-              File.WriteAllText(OutputFilename,Regex.Replace(File.ReadAllText(InputFilename),MatchExpression,ReplacementText));
-        ]]>
-			</Code>
-		</Task>
-	</UsingTask>
-  
 </Project>
   
   

@@ -1,6 +1,7 @@
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.UI;
+using Serilog;
 using System;
 using System.Reflection;
 using System.Windows.Media.Imaging;
@@ -27,6 +28,12 @@ class App : IExternalApplication
         CachedUiCtrApp = application;
         CtrApp = application.ControlledApplication;
 
+
+
+        // Initialize Serilog (no DI)
+        Logging.Initialize("IsolateWarnings", $"RevitVersion={application.ControlledApplication.VersionNumber}");
+        Log.Debug("Starting up add-in");
+
         var ribbonPanel = CreateRibbonPanel();
 
         Syncfusion.Licensing.SyncfusionLicenseProvider
@@ -48,10 +55,7 @@ class App : IExternalApplication
             $"{nameof(IsolateWarnings)}.{nameof(IsolateWarnings.CommandWarnings)}"));
         pushButton.ToolTip = "Isolate elements with warnings in Revit";
         pushButton.LargeImage = PngImageSource("IsolateWarnings.Images.Warnings32.png");
-
-
-        ContextualHelp contextHelp = new ContextualHelp(ContextualHelpType.Url, @"https://github.com/russgreen/IsolateWarnings/wiki");
-        pushButton.SetContextualHelp(contextHelp);
+        pushButton.SetContextualHelp(new ContextualHelp(ContextualHelpType.Url, @"https://github.com/russgreen/IsolateWarnings/wiki"));
 
         return panel;
     }

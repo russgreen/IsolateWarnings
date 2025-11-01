@@ -355,3 +355,7 @@ Installer/*.back.aip
 Installer/IsolateWarnings-cache/*
 Installer/IsolateWarnings-SetupFiles/*
 /SyncfusionKey.txt
+
+# misc solution stuff
+ApiSecret.txt
+MeasurementId.txt
