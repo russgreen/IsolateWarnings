@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="23.0.1" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="23.4" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="Warnings.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Russell Green"/>
-    <ROW Property="ProductCode" Value="1033:{BDE9B784-594F-4904-B00B-0F45DC4FB153} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{73952D99-1CE1-46BC-A677-3479C887D64F} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Isolate Warnings"/>
     <ROW Property="ProductVersion" Value="3.7" Options="32"/>
