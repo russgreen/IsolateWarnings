@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="23.4" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
+<DOCUMENT Type="Advanced Installer" CreateVersion="19.1" version="23.5.1" Modules="simple" RootPath="." Language="en" Id="{5916C2D6-3FA4-4F34-99C8-C6302DB4726B}">
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="Warnings.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Russell Green"/>
-    <ROW Property="ProductCode" Value="1033:{73952D99-1CE1-46BC-A677-3479C887D64F} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{93CF8C85-AF4E-450E-8DDC-67A2928F6878} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Isolate Warnings"/>
-    <ROW Property="ProductVersion" Value="3.7" Options="32"/>
+    <ROW Property="ProductVersion" Value="3.8" Options="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{F04F085F-5478-481E-B50C-946A19EEF10F}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -25,31 +25,39 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="Addins_1_Dir" Directory_Parent="Revit_1_Dir" DefaultDir="Addins"/>
     <ROW Directory="Addins_Dir" Directory_Parent="Revit_Dir" DefaultDir="Addins"/>
     <ROW Directory="ApplicationPlugins_Dir" Directory_Parent="Autodesk_Dir" DefaultDir="APPLIC~1|ApplicationPlugins"/>
+    <ROW Directory="Autodesk_1_Dir" Directory_Parent="ProgramFiles64Folder" DefaultDir="Autodesk"/>
     <ROW Directory="Autodesk_Dir" Directory_Parent="CommonAppDataFolder" DefaultDir="Autodesk"/>
     <ROW Directory="CommonAppDataFolder" Directory_Parent="TARGETDIR" DefaultDir="COMMON~1|CommonAppDataFolder" IsPseudoRoot="1"/>
     <ROW Directory="IsolateWarnings_1_Dir" Directory_Parent="__4_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
     <ROW Directory="IsolateWarnings_2_Dir" Directory_Parent="NewFolder_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
     <ROW Directory="IsolateWarnings_3_Dir" Directory_Parent="__5_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
     <ROW Directory="IsolateWarnings_4_Dir" Directory_Parent="__6_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
+    <ROW Directory="IsolateWarnings_5_Dir" Directory_Parent="__Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
     <ROW Directory="IsolateWarnings_Dir" Directory_Parent="__3_Dir" DefaultDir="ISOLAT~1|IsolateWarnings"/>
     <ROW Directory="NewFolder_Dir" Directory_Parent="Addins_Dir" DefaultDir="2024"/>
+    <ROW Directory="ProgramFiles64Folder" Directory_Parent="TARGETDIR" DefaultDir="PROGRA~1|ProgramFiles64Folder" IsPseudoRoot="1"/>
+    <ROW Directory="Revit_1_Dir" Directory_Parent="Autodesk_1_Dir" DefaultDir="Revit"/>
     <ROW Directory="Revit_Dir" Directory_Parent="Autodesk_Dir" DefaultDir="Revit"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="__3_Dir" Directory_Parent="Addins_Dir" DefaultDir="2022"/>
     <ROW Directory="__4_Dir" Directory_Parent="Addins_Dir" DefaultDir="2023"/>
     <ROW Directory="__5_Dir" Directory_Parent="Addins_Dir" DefaultDir="2025"/>
     <ROW Directory="__6_Dir" Directory_Parent="Addins_Dir" DefaultDir="2026"/>
+    <ROW Directory="__Dir" Directory_Parent="Addins_1_Dir" DefaultDir="2027"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{CC55D69B-B55D-4D44-8907-996229B4E66B}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="ApplicationPlugins" ComponentId="{E9138D4E-992C-4666-BF28-DB27F1CE815D}" Directory_="ApplicationPlugins_Dir" Attributes="0"/>
+    <ROW Component="CommunityToolkit.Mvvm.dll" ComponentId="{81E9CE2D-D6D4-492F-8F8F-C15828D0E1B4}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="CommunityToolkit.Mvvm.dll"/>
     <ROW Component="IsolateWarnings.addin" ComponentId="{213421CF-F99E-4C59-A5F3-0BEBECE0B3D5}" Directory_="__6_Dir" Attributes="0" KeyPath="IsolateWarnings.addin" Type="0"/>
     <ROW Component="IsolateWarnings.addin_1" ComponentId="{0E5D5F9E-5837-46A8-96B2-E461400DD1A8}" Directory_="__5_Dir" Attributes="0" KeyPath="IsolateWarnings.addin_1" Type="0"/>
     <ROW Component="IsolateWarnings.addin_2" ComponentId="{3BFFBAB3-7E39-4A29-9679-658B422BFBD5}" Directory_="NewFolder_Dir" Attributes="0" KeyPath="IsolateWarnings.addin_2" Type="0"/>
     <ROW Component="IsolateWarnings.addin_3" ComponentId="{B63104A8-5CF5-426D-AF6F-96E02DD96760}" Directory_="__4_Dir" Attributes="0" KeyPath="IsolateWarnings.addin_3" Type="0"/>
     <ROW Component="IsolateWarnings.addin_4" ComponentId="{4DC4E4EB-1036-48E9-AB2D-3A6658C2E4A9}" Directory_="__3_Dir" Attributes="0" KeyPath="IsolateWarnings.addin_4" Type="0"/>
+    <ROW Component="IsolateWarnings.deps.json" ComponentId="{8B2B69DE-40B8-4B89-9C32-314CB18698E4}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="IsolateWarnings.deps.json_1" Type="0"/>
     <ROW Component="IsolateWarnings.deps.json_2" ComponentId="{9FE6223D-BA23-4258-A652-3877EB2FBF53}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="IsolateWarnings.deps.json" Type="0"/>
     <ROW Component="IsolateWarnings.deps.json_3" ComponentId="{F4073B47-EE46-4624-9944-9D5CB01ED17C}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="IsolateWarnings.deps.json_2" Type="0"/>
     <ROW Component="IsolateWarnings.dll" ComponentId="{945FDACE-C63C-4A94-AD45-ADBBD6FE3102}" Directory_="IsolateWarnings_Dir" Attributes="256" KeyPath="IsolateWarnings.dll"/>
@@ -57,27 +65,40 @@
     <ROW Component="IsolateWarnings.dll_2" ComponentId="{03A366C4-AE64-4F1A-B79A-AAFA5DB142DE}" Directory_="IsolateWarnings_2_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_2"/>
     <ROW Component="IsolateWarnings.dll_3" ComponentId="{A0731C41-8780-479B-9A4C-44F4ACB1FAEF}" Directory_="IsolateWarnings_3_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_3"/>
     <ROW Component="IsolateWarnings.dll_4" ComponentId="{9E01581D-BB07-4250-8679-D999B44DFBD8}" Directory_="IsolateWarnings_4_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_4"/>
+    <ROW Component="IsolateWarnings.dll_5" ComponentId="{D1964C1F-F655-4B5E-9AAC-F120118A907B}" Directory_="IsolateWarnings_5_Dir" Attributes="256" KeyPath="IsolateWarnings.dll_5"/>
+    <ROW Component="IsolateWarnings_Isolated.addin" ComponentId="{79162852-A87B-4E1E-A513-74FCFE4C35D3}" Directory_="__Dir" Attributes="0" KeyPath="IsolateWarnings_Isolated.addin" Type="0"/>
+    <ROW Component="Microsoft.Xaml.Behaviors.dll" ComponentId="{28976759-CE3E-4A8E-B570-6BD727C2E2F2}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Microsoft.Xaml.Behaviors.dll"/>
     <ROW Component="ProductInformation" ComponentId="{A45F939A-A1D5-4C15-8D1F-55EA1FF9901F}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
+    <ROW Component="Serilog.Sinks.Async.dll" ComponentId="{63DCA10F-63B4-4FE9-831B-C8467B9D4669}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Serilog.Sinks.Async.dll"/>
+    <ROW Component="Serilog.Sinks.Debug.dll" ComponentId="{95C4C17C-7718-48F9-8E69-D196C6C998DA}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Serilog.Sinks.Debug.dll"/>
+    <ROW Component="Serilog.Sinks.File.dll" ComponentId="{E62B1635-6E25-488C-9BF6-01C4D566BED8}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Serilog.Sinks.File.dll"/>
+    <ROW Component="Serilog.Sinks.GoogleAnalytics.dll" ComponentId="{C1907FF8-6756-49D8-9660-8D026C7720DC}" Directory_="IsolateWarnings_5_Dir" Attributes="256" KeyPath="Serilog.Sinks.GoogleAnalytics.dll"/>
+    <ROW Component="Serilog.Sinks.PeriodicBatching.dll" ComponentId="{550609EB-26FC-4AF0-AEB5-C43A06B82902}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Serilog.Sinks.PeriodicBatching.dll"/>
+    <ROW Component="Serilog.dll" ComponentId="{F738DA23-7B89-4080-BE69-35BA7F8F3AEA}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Serilog.dll"/>
     <ROW Component="Syncfusion.Data.WPF.dll" ComponentId="{EDF5580A-0E75-41FB-9485-D726C2B1FA9A}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll"/>
     <ROW Component="Syncfusion.Data.WPF.dll_1" ComponentId="{844CF4C6-C5D3-49DF-A3F5-BBFADDE2B0AC}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_1"/>
     <ROW Component="Syncfusion.Data.WPF.dll_2" ComponentId="{EAD6BAA1-903A-4653-938F-91FC242B52DF}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_2"/>
     <ROW Component="Syncfusion.Data.WPF.dll_3" ComponentId="{A51BC27C-AA6D-433D-B019-3A46564CABC8}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_3"/>
     <ROW Component="Syncfusion.Data.WPF.dll_4" ComponentId="{BE27E9B2-758B-4B81-83EB-78825098F97C}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_4"/>
+    <ROW Component="Syncfusion.Data.WPF.dll_5" ComponentId="{162DCE09-5064-4042-A63C-4E3B11F6D7A7}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Syncfusion.Data.WPF.dll_5"/>
     <ROW Component="Syncfusion.Licensing.dll" ComponentId="{4203A962-43A4-4E57-9151-1D6698D96C43}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll"/>
     <ROW Component="Syncfusion.Licensing.dll_1" ComponentId="{486CBA4A-FC00-40D2-BECE-F6ABA290F096}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_1"/>
     <ROW Component="Syncfusion.Licensing.dll_2" ComponentId="{DB2858DD-D750-4DAA-B2C2-16DA2B127078}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_2"/>
     <ROW Component="Syncfusion.Licensing.dll_3" ComponentId="{0A834B90-62B3-4074-9306-687B31F12BCD}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_3"/>
     <ROW Component="Syncfusion.Licensing.dll_4" ComponentId="{656BC8B7-8A2D-44AC-8708-26A91CB36524}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_4"/>
+    <ROW Component="Syncfusion.Licensing.dll_5" ComponentId="{1EC9C3C3-5756-4E36-B7D7-34A317A0D3F8}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Syncfusion.Licensing.dll_5"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll" ComponentId="{83CD22B1-6C73-47BC-932B-5CEF37822079}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_1" ComponentId="{E10184B2-DD85-4437-AC7D-D430AF044077}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_1"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_2" ComponentId="{14613769-FF2F-42BD-956F-32661419176F}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_2"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_3" ComponentId="{541DB6A1-4AFB-402C-973B-F58277DF621B}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_3"/>
     <ROW Component="Syncfusion.SfGrid.WPF.dll_4" ComponentId="{F725BBF3-9C56-4D89-A0AA-412CF778BA96}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_4"/>
+    <ROW Component="Syncfusion.SfGrid.WPF.dll_5" ComponentId="{BD6300E6-9A27-46C5-B85C-C87AAB447500}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Syncfusion.SfGrid.WPF.dll_5"/>
     <ROW Component="Syncfusion.Shared.WPF.dll" ComponentId="{7289B8CE-9B34-4BD5-81E7-CA428DCB4BC3}" Directory_="IsolateWarnings_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_1" ComponentId="{A6C8D198-1B39-4B74-B011-318FE49B90FA}" Directory_="IsolateWarnings_1_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_1"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_2" ComponentId="{73AE901D-CEDA-4F2C-9D0E-842BC6C51532}" Directory_="IsolateWarnings_2_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_2"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_3" ComponentId="{E9539340-1040-4C0D-BDD3-0C00E518FBC7}" Directory_="IsolateWarnings_3_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_3"/>
     <ROW Component="Syncfusion.Shared.WPF.dll_4" ComponentId="{DAC2152B-F589-4750-B518-E8D746CE94B5}" Directory_="IsolateWarnings_4_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_4"/>
+    <ROW Component="Syncfusion.Shared.WPF.dll_5" ComponentId="{458A971E-3002-497A-96D7-23011607D823}" Directory_="IsolateWarnings_5_Dir" Attributes="0" KeyPath="Syncfusion.Shared.WPF.dll_5"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
@@ -116,6 +137,21 @@
     <ROW File="IsolateWarnings.addin_2" Component_="IsolateWarnings.addin_2" FileName="ISOLAT~1.ADD|IsolateWarnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\IsolateWarnings.addin" SelfReg="false"/>
     <ROW File="IsolateWarnings.addin_3" Component_="IsolateWarnings.addin_3" FileName="ISOLAT~1.ADD|IsolateWarnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\IsolateWarnings.addin" SelfReg="false"/>
     <ROW File="IsolateWarnings.addin_4" Component_="IsolateWarnings.addin_4" FileName="ISOLAT~1.ADD|IsolateWarnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\IsolateWarnings.addin" SelfReg="false"/>
+    <ROW File="Syncfusion.Data.WPF.dll_5" Component_="Syncfusion.Data.WPF.dll_5" FileName="SYNCFU~1.DLL|Syncfusion.Data.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Syncfusion.Data.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll_5" Component_="Syncfusion.Licensing.dll_5" FileName="SYNCFU~2.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfGrid.WPF.dll_5" Component_="Syncfusion.SfGrid.WPF.dll_5" FileName="SYNCFU~3.DLL|Syncfusion.SfGrid.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Syncfusion.SfGrid.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Shared.WPF.dll_5" Component_="Syncfusion.Shared.WPF.dll_5" FileName="SYNCFU~4.DLL|Syncfusion.Shared.WPF.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Syncfusion.Shared.WPF.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings.deps.json_1" Component_="IsolateWarnings.deps.json" FileName="ISOLAT~1.JSO|IsolateWarnings.deps.json" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\IsolateWarnings.deps.json" SelfReg="false"/>
+    <ROW File="IsolateWarnings.dll_5" Component_="IsolateWarnings.dll_5" FileName="ISOLAT~1.DLL|IsolateWarnings.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\IsolateWarnings.dll" SelfReg="false"/>
+    <ROW File="CommunityToolkit.Mvvm.dll" Component_="CommunityToolkit.Mvvm.dll" FileName="COMMUN~1.DLL|CommunityToolkit.Mvvm.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\CommunityToolkit.Mvvm.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Xaml.Behaviors.dll" Component_="Microsoft.Xaml.Behaviors.dll" FileName="MICROS~1.DLL|Microsoft.Xaml.Behaviors.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Microsoft.Xaml.Behaviors.dll" SelfReg="false"/>
+    <ROW File="Serilog.dll" Component_="Serilog.dll" FileName="Serilog.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Serilog.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.Async.dll" Component_="Serilog.Sinks.Async.dll" FileName="SERILO~1.DLL|Serilog.Sinks.Async.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Serilog.Sinks.Async.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.Debug.dll" Component_="Serilog.Sinks.Debug.dll" FileName="SERILO~2.DLL|Serilog.Sinks.Debug.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Serilog.Sinks.Debug.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.File.dll" Component_="Serilog.Sinks.File.dll" FileName="SERILO~3.DLL|Serilog.Sinks.File.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Serilog.Sinks.File.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.GoogleAnalytics.dll" Component_="Serilog.Sinks.GoogleAnalytics.dll" FileName="SERILO~4.DLL|Serilog.Sinks.GoogleAnalytics.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Serilog.Sinks.GoogleAnalytics.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.PeriodicBatching.dll" Component_="Serilog.Sinks.PeriodicBatching.dll" FileName="SERILO~5.DLL|Serilog.Sinks.PeriodicBatching.dll" Attributes="0" SourcePath="..\IsolateWarnings\bin\x64\Release R27\Serilog.Sinks.PeriodicBatching.dll" SelfReg="false"/>
+    <ROW File="IsolateWarnings_Isolated.addin" Component_="IsolateWarnings_Isolated.addin" FileName="ISOLAT~2.ADD|IsolateWarnings.addin" Attributes="0" SourcePath="..\IsolateWarnings\IsolateWarnings_Isolated.addin" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -240,6 +276,21 @@
     <ROW Feature_="MainFeature" Component_="IsolateWarnings.addin_2"/>
     <ROW Feature_="MainFeature" Component_="IsolateWarnings.addin_3"/>
     <ROW Feature_="MainFeature" Component_="IsolateWarnings.addin_4"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Data.WPF.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfGrid.WPF.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Shared.WPF.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.deps.json"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings.dll_5"/>
+    <ROW Feature_="MainFeature" Component_="CommunityToolkit.Mvvm.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Xaml.Behaviors.dll"/>
+    <ROW Feature_="MainFeature" Component_="Serilog.dll"/>
+    <ROW Feature_="MainFeature" Component_="Serilog.Sinks.Async.dll"/>
+    <ROW Feature_="MainFeature" Component_="Serilog.Sinks.Debug.dll"/>
+    <ROW Feature_="MainFeature" Component_="Serilog.Sinks.File.dll"/>
+    <ROW Feature_="MainFeature" Component_="Serilog.Sinks.GoogleAnalytics.dll"/>
+    <ROW Feature_="MainFeature" Component_="Serilog.Sinks.PeriodicBatching.dll"/>
+    <ROW Feature_="MainFeature" Component_="IsolateWarnings_Isolated.addin"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="Warnings.exe" SourcePath="..\IsolateWarnings\Warnings.ico" Index="0"/>

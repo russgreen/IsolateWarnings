@@ -1,21 +1,30 @@
-﻿using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ECETools.Services;
 using IsolateWarnings.Models;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IsolateWarnings.ViewModels;
 internal partial class FilterWarningsViewModel : BaseViewModel
 {
-    private IList<FailureMessage> _warnings;
+
+    private IList<FailureMessage> _warnings = [];
 
     [ObservableProperty]
-    private IList<FailureModel> _failures;
+    private IList<FailureModel> _failures = [];
 
     [ObservableProperty]
-    private ObservableCollection<object> _selectedFailures;
+    private IList<FailureModel> _filteredFailures = [];
+
+    [ObservableProperty]
+    private ObservableCollection<object> _selectedFailures = new();
 
     private List<ElementId> _elementIds = new();
 
@@ -28,12 +37,42 @@ internal partial class FilterWarningsViewModel : BaseViewModel
     [ObservableProperty]
     private bool _isCommandEnabled = false;
 
+    [ObservableProperty]
+    private int _totalCount;
+
+    [ObservableProperty]
+    private int _errorCount;
+
+    [ObservableProperty]
+    private int _warningCount;
+
+    [ObservableProperty]
+    private int _criticalCount;
+
+    [ObservableProperty]
+    private bool _showCriticalOnly = false;
+
+    [ObservableProperty]
+    private IList<WarningGroupSummary> _topWarningGroups = [];
+
     public FilterWarningsViewModel()
     {
         LoadDocumentWarnings();
 
         SelectedFailures = new();
         SelectedFailures.CollectionChanged += SelectedFailures_CollectionChanged;
+    }
+
+    partial void OnShowCriticalOnlyChanged(bool value)
+    {
+        ApplyFilter(value);
+    }
+
+    private void ApplyFilter(bool criticalOnly)
+    {
+        FilteredFailures = criticalOnly
+            ? Failures.Where(f => f.IsCritical).ToList()
+            : Failures.ToList();
     }
 
     private void LoadDocumentWarnings()
@@ -54,16 +93,29 @@ internal partial class FilterWarningsViewModel : BaseViewModel
                 resolution = "No resolution available";
             }
 
+            var guid = warning.GetFailureDefinitionId().Guid;
+            var isCritical = CriticalWarningsHelper.IsCritical(guid);
+
             var failure = new FailureModel
             {
                 Description = warning.GetDescriptionText(),
                 ResolutionCaption = resolution,
-                Severity = warning.GetSeverity()
+                Severity = warning.GetSeverity(),
+                FailureDefinitionGuid = guid,
+                IsCritical = isCritical,
+                CriticalReason = CriticalWarningsHelper.GetCriticalReason(guid)
             };
 
             failure.FailingElements.AddRange(
                 warning.GetFailingElements()
                        .Select(elementId => App.RevitDocument.GetElement(elementId))
+                       .Where(element => element != null)
+                       .Select(element => new WarningElementModel
+                       {
+                           Id = element!.Id,
+                           CategoryName = element.Category?.Name ?? string.Empty,
+                           Name = element.Name
+                       })
             );
             Failures.Add(failure);
         }
@@ -72,9 +124,40 @@ internal partial class FilterWarningsViewModel : BaseViewModel
         {
             IsCommandEnabled = true;
         }
+
+        TotalCount = Failures.Count;
+        ErrorCount = Failures.Count(f => f.Severity == FailureSeverity.Error);
+        WarningCount = Failures.Count(f => f.Severity == FailureSeverity.Warning);
+        CriticalCount = Failures.Count(f => f.IsCritical);
+
+        var groups = Failures
+            .GroupBy(f => f.Description)
+            .Select(g => new WarningGroupSummary
+            {
+                Description = g.Key,
+                Count = g.Count(),
+                Severity = g.Max(f => f.Severity),
+                IsCritical = g.Any(f => f.IsCritical)
+            })
+            .OrderByDescending(g => g.IsCritical)
+            .ThenByDescending(g => g.Count)
+            .Take(10)
+            .ToList();
+
+        var maxCount = groups.Count > 0 ? groups.Max(g => g.Count) : 1;
+        if (groups.Count > 0)
+        {
+            foreach (var group in groups)
+            {
+                group.BarWidthFraction = (double)group.Count / maxCount;
+            }
+        }
+
+        TopWarningGroups = groups;
+        ApplyFilter(ShowCriticalOnly);
     }
 
-    private void SelectedFailures_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    private void SelectedFailures_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         ButtonText = SelectedFailures.Count > 0 ? "Isolate Selected Warnings" : "Isolate All Warnings";
     }
@@ -122,6 +205,11 @@ internal partial class FilterWarningsViewModel : BaseViewModel
                     .FirstOrDefault();
 
                 // open the view
+                if (isolateView == null)
+                {
+                    return;
+                }
+
                 App.CachedUiApp.ActiveUIDocument.ActiveView = isolateView;
 
                 foreach (var vw in App.CachedUiApp.ActiveUIDocument.GetOpenUIViews())

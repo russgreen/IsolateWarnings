@@ -6,7 +6,7 @@
 	  <Platforms>x64</Platforms>
 	  <Description>Isolate elements with warnings in Revit</Description>
 	  <Copyright>Copyright © Russell Green</Copyright>
-	  <Version>3.7</Version>
+	  <Version>3.8</Version>
 	  <PlatformTarget>x64</PlatformTarget>
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	  <LangVersion>latest</LangVersion>
@@ -19,6 +19,7 @@
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	  <RevitVersion>0</RevitVersion>
   </PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration.Contains('Debug'))">
@@ -73,9 +74,9 @@
   </ItemGroup>
 	
 		<PropertyGroup>
-		<!--<IsRepackable Condition="$(Configuration.Contains('Release'))">true</IsRepackable>-->
-		<IsRepackable>true</IsRepackable>
-		<RepackBinariesExcludes>Syncfusion*.dll;e_sqlite3.dll;SQLitePCL*.dll;</RepackBinariesExcludes>
+		<IsRepackable Condition="$(Configuration.Contains('Release')) And '$(RevitVersion)' &lt; '2027'">true</IsRepackable>
+		<!--<IsRepackable>true</IsRepackable>-->
+		<RepackBinariesExcludes>Syncfusion*.dll</RepackBinariesExcludes>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -93,17 +94,16 @@
 		<PackageReference Include="Syncfusion.SfGrid.WPF" Version="29.1.35" />
 		
 		<PackageReference Include="Serilog" Version="4.*" />
-		
-		<PackageReference Include="Serilog.Sinks.Debug" Version="3.*"  />
-		<PackageReference Include="Serilog.Sinks.File" Version="6.*"  />
+
+		<PackageReference Include="Serilog.Sinks.Debug" Version="3.*" />
+		<PackageReference Include="Serilog.Sinks.File" Version="7.*" />
 
 		<PackageReference Include="Serilog.Sinks.Async" Version="2.*" />
 
 		<PackageReference Include="Serilog.Sinks.GoogleAnalytics" Version="1.*" />
 
 		<!--Repacking-->
-		<!--<PackageVersion Include="ILRepack" Version="2.0.39" ExcludeAssets="Runtime" />-->
-		<PackageReference Include="ILRepack" Version="2.0.41">
+		<PackageReference Include="ILRepack" Version="2.0.44" Condition="'$(RevitVersion)' &lt; '2027'">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -116,11 +116,6 @@
   <!-- Build debug manifest at build time -->
   </ItemGroup>
 	
-	
-  <ItemGroup>
-    <Folder Include="Behaviours\" />
-  </ItemGroup>
-
 </Project>
   
   

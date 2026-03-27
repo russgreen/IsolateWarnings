@@ -18,6 +18,8 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
     <File Path="SyncfusionKey.txt" />
+        <File Path="ApiSecret.txt" />
+            <File Path="MeasurementId.txt" />
     <File Path="SyncfusionLicenseRegister.bat" />
   </Folder>
   <Project Path="build/_build.csproj">

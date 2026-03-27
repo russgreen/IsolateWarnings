@@ -10,22 +10,13 @@
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type viewModels:FilterWarningsViewModel }, IsDesignTimeCreatable=True}"
-        Title="Filter Warnings" Height="450" Width="800"
+        Title="Model Health Dashboard" Height="750" Width="900"
         WindowStartupLocation="CenterScreen" 
         WindowStyle="ToolWindow"
         Visibility="{Binding IsWindowVisible, Mode=TwoWay}">
 
-    <Window.DataContext>
-        <viewModels:FilterWarningsViewModel />
-    </Window.DataContext>
-
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="GlobalResources.xaml" />
-                <ResourceDictionary Source="AppStyles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
 
     <!--<Window.Style>
@@ -34,67 +25,229 @@
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <!--<ColumnDefinition Width="350"/>-->
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- Model Health Dashboard                                  -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <Border Grid.Row="0" BorderBrush="#CCCCCC" BorderThickness="1" CornerRadius="4" Padding="12" Background="#FAFAFA">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
+                <!-- Title -->
+                <TextBlock Grid.Row="0" Text="Model Health Dashboard" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
 
-        <syncfusion:SfDataGrid Grid.Column="0" 
-                               Grid.Row="0"
-                               Margin="0,0,0,0" 
-               x:Name="sfDataGridFailures"
-               ItemsSource="{Binding Failures }" 
-               SelectedItems="{Binding SelectedFailures}"
-               AutoGenerateColumns="False"      
-               AllowGrouping="True" 
-               AllowFiltering="True"
-               AllowSorting="True"
-               NavigationMode="Row" 
-               SelectionMode="Extended" 
-               RowSelectionBrush="#9993B8D9"
-               ColumnSizer="AutoWithLastColumnFill" >
+                <!-- Summary cards -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,12">
 
-            <syncfusion:SfDataGrid.SortColumnDescriptions>
-                <syncfusion:SortColumnDescription ColumnName="Severity" SortDirection="Ascending" />
-                <syncfusion:SortColumnDescription ColumnName="Description" SortDirection="Ascending" />
-            </syncfusion:SfDataGrid.SortColumnDescriptions>
-             <syncfusion:SfDataGrid.GroupColumnDescriptions>
-               <syncfusion:GroupColumnDescription ColumnName="Description" />
-            </syncfusion:SfDataGrid.GroupColumnDescriptions>
-            
-            <syncfusion:SfDataGrid.Columns>
-                <syncfusion:GridCheckBoxSelectorColumn MappingName="SelectorColumn" HeaderText="" Width="34" />
-                <syncfusion:GridTextColumn MappingName="Severity" HeaderText="Severity" Width="100" AllowEditing="False" />
-                <syncfusion:GridTextColumn MappingName="Description" HeaderText="Description"  AllowEditing="False"  />
-                <syncfusion:GridTextColumn MappingName="ResolutionCaption" HeaderText="Resolution" Width="300" AllowEditing="False" />
-            </syncfusion:SfDataGrid.Columns>
+                    <!-- Total Issues card -->
+                    <Border Width="140" Height="70" CornerRadius="4" Margin="0,0,10,0">
+                        <Border.Background>
+                            <SolidColorBrush Color="#93B8D9"/>
+                        </Border.Background>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding TotalCount}" FontSize="30" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="TOTAL ISSUES" FontSize="10" FontWeight="SemiBold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                        </StackPanel>
+                    </Border>
 
+                    <!-- Errors card -->
+                    <Border Width="140" Height="70" CornerRadius="4" Margin="0,0,10,0">
+                        <Border.Background>
+                            <SolidColorBrush Color="#C0392B"/>
+                        </Border.Background>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding ErrorCount}" FontSize="30" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="ERRORS" FontSize="10" FontWeight="SemiBold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                        </StackPanel>
+                    </Border>
 
-            <syncfusion:SfDataGrid.DetailsViewDefinition >
-                <syncfusion:GridViewDefinition RelationalColumn="FailingElements">
-                    <syncfusion:GridViewDefinition.DataGrid>
-                        <syncfusion:SfDataGrid AutoGenerateColumns="False"
-                                               ColumnSizer="AutoWithLastColumnFill">
-                            <syncfusion:SfDataGrid.Columns>
-                                <syncfusion:GridTextColumn MappingName="Id" HeaderText="ID" Width="100" AllowEditing="False" />
-                                <syncfusion:GridTextColumn MappingName="Category.Name" HeaderText="Category" Width="250" AllowEditing="False" />                                
-                                <syncfusion:GridTextColumn MappingName="Name" HeaderText="Name"  AllowEditing="False"  />
-                            </syncfusion:SfDataGrid.Columns>
-                        </syncfusion:SfDataGrid>
-                    </syncfusion:GridViewDefinition.DataGrid>
-                </syncfusion:GridViewDefinition>
-            </syncfusion:SfDataGrid.DetailsViewDefinition>
-            
-        </syncfusion:SfDataGrid>
+                    <!-- Warnings card -->
+                    <Border Width="140" Height="70" CornerRadius="4" Margin="0,0,10,0">
+                        <Border.Background>
+                            <SolidColorBrush Color="#E67E22"/>
+                        </Border.Background>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding WarningCount}" FontSize="30" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="WARNINGS" FontSize="10" FontWeight="SemiBold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                        </StackPanel>
+                    </Border>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0" Height="23" Grid.Row="1" >
-            <Button Content="{Binding ButtonText}" Padding="5,0,5,0" 
-                    Command="{Binding IsolateWarningsCommand}" 
+                    <!-- Critical Issues card -->
+                    <Border Width="140" Height="70" CornerRadius="4"
+                            ToolTip="Warnings flagged as critical based on the pyRevit critical warnings list. These require immediate attention.">
+                        <Border.Background>
+                            <SolidColorBrush Color="#8E44AD"/>
+                        </Border.Background>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding CriticalCount}" FontSize="30" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="CRITICAL" FontSize="10" FontWeight="SemiBold"
+                                       HorizontalAlignment="Center" Foreground="White"/>
+                        </StackPanel>
+                    </Border>
+
+                </StackPanel>
+
+                <!-- Top Issues header -->
+                <TextBlock Grid.Row="2" Text="Top Issues by Type" FontWeight="SemiBold" Margin="0,0,0,6"/>
+
+                <!-- Top Issues bar chart -->
+                <ItemsControl Grid.Row="3" ItemsSource="{Binding TopWarningGroups}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2,0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="240"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="36"/>
+                                </Grid.ColumnDefinitions>
+                                <!-- Critical indicator -->
+                                <TextBlock Grid.Column="0"
+                                           Text="⚠"
+                                           Foreground="#8E44AD"
+                                           FontSize="11"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"
+                                           Visibility="{Binding IsCritical, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                           ToolTip="Critical warning — requires immediate attention"/>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Description}"
+                                           TextTrimming="CharacterEllipsis"
+                                           VerticalAlignment="Center"
+                                           ToolTip="{Binding Description}"
+                                           FontSize="11"/>
+                                <ProgressBar Grid.Column="2"
+                                             Value="{Binding BarWidthFraction}"
+                                             Maximum="1"
+                                             Height="14"
+                                             Margin="6,0,6,0"
+                                             Foreground="#93B8D9"
+                                             Background="#E8E8E8"/>
+                                <TextBlock Grid.Column="3"
+                                           Text="{Binding Count}"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Center"
+                                           FontSize="11"
+                                           FontWeight="SemiBold"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </Grid>
+        </Border>
+
+        <!-- Grid Splitter -->
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                      Background="#CCCCCC" Cursor="SizeNS" IsTabStop="True"
+                      AutomationProperties.Name="Resize dashboard splitter"/>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- Detailed Warnings List                                  -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,4,0,6">
+                <TextBlock Text="Detailed Warnings" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <CheckBox Margin="16,0,0,0"
+                          IsChecked="{Binding ShowCriticalOnly, Mode=TwoWay}"
+                          VerticalAlignment="Center"
+                          ToolTip="Show only warnings that are flagged as critical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="⚠" Foreground="#8E44AD" FontWeight="Bold" Margin="0,0,4,0"/>
+                        <TextBlock Text="Show Critical Only"/>
+                    </StackPanel>
+                </CheckBox>
+            </StackPanel>
+
+            <syncfusion:SfDataGrid Grid.Row="1"
+                                   Margin="0,0,0,0" 
+                   x:Name="sfDataGridFailures"
+                   ItemsSource="{Binding FilteredFailures }" 
+                   SelectedItems="{Binding SelectedFailures, Mode=TwoWay}"
+                   AutoGenerateColumns="False"      
+                   AllowGrouping="True" 
+                   AllowFiltering="True"
+                   AllowSorting="True"
+                   NavigationMode="Row" 
+                   SelectionMode="Extended" 
+                   RowSelectionBrush="#9993B8D9"
+                   ColumnSizer="AutoWithLastColumnFill" >
+
+                <syncfusion:SfDataGrid.SortColumnDescriptions>
+                    <syncfusion:SortColumnDescription ColumnName="IsCritical" SortDirection="Descending" />
+                    <syncfusion:SortColumnDescription ColumnName="Severity" SortDirection="Ascending" />
+                    <syncfusion:SortColumnDescription ColumnName="Description" SortDirection="Ascending" />
+                </syncfusion:SfDataGrid.SortColumnDescriptions>
+                <syncfusion:SfDataGrid.GroupColumnDescriptions>
+                    <syncfusion:GroupColumnDescription ColumnName="Description" />
+                </syncfusion:SfDataGrid.GroupColumnDescriptions>
+
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridCheckBoxSelectorColumn MappingName="SelectorColumn" HeaderText="" Width="34" />
+                    <!-- Critical indicator column -->
+                    <syncfusion:GridTemplateColumn MappingName="IsCritical" HeaderText="⚠" Width="36" AllowFiltering="True" AllowSorting="True">
+                        <syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="⚠"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Foreground="#8E44AD"
+                                           FontSize="13"
+                                           FontWeight="Bold"
+                                           Visibility="{Binding IsCritical, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                           ToolTip="{Binding CriticalReason}"/>
+                            </DataTemplate>
+                        </syncfusion:GridTemplateColumn.CellTemplate>
+                    </syncfusion:GridTemplateColumn>
+                    <syncfusion:GridTextColumn MappingName="Severity" HeaderText="Severity" Width="100" AllowEditing="False" />
+                    <syncfusion:GridTextColumn MappingName="Description" HeaderText="Description" AllowEditing="False" />
+                    <syncfusion:GridTextColumn MappingName="ResolutionCaption" HeaderText="Resolution" Width="300" AllowEditing="False" />
+                </syncfusion:SfDataGrid.Columns>
+
+                <syncfusion:SfDataGrid.DetailsViewDefinition>
+                    <syncfusion:GridViewDefinition RelationalColumn="FailingElements">
+                        <syncfusion:GridViewDefinition.DataGrid>
+                            <syncfusion:SfDataGrid AutoGenerateColumns="False"
+                                                   ColumnSizer="AutoWithLastColumnFill">
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridTextColumn MappingName="Id" HeaderText="ID" Width="100" AllowEditing="False" />
+                                    <syncfusion:GridTextColumn MappingName="CategoryName" HeaderText="Category" Width="250" AllowEditing="False" />
+                                    <syncfusion:GridTextColumn MappingName="Name" HeaderText="Name" AllowEditing="False" />
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+                        </syncfusion:GridViewDefinition.DataGrid>
+                    </syncfusion:GridViewDefinition>
+                </syncfusion:SfDataGrid.DetailsViewDefinition>
+
+            </syncfusion:SfDataGrid>
+        </Grid>
+
+        <!-- Button Panel -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0" Height="23" Grid.Row="3">
+            <Button Content="{Binding ButtonText}" Padding="5,0,5,0"
+                    Command="{Binding IsolateWarningsCommand}"
                     IsEnabled="{Binding IsCommandEnabled}"
                     IsDefault="True"/>
             <Button Content="Cancel" Padding="5,0,5,0" Margin="5,0,0,0" IsCancel="True" />

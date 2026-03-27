@@ -15,7 +15,8 @@ public partial class FilterWarningsView : Window
         var _ = new Microsoft.Xaml.Behaviors.DefaultTriggerAttribute(typeof(Trigger), typeof(Microsoft.Xaml.Behaviors.TriggerBase), null);
 
 
-        _viewModel = (ViewModels.FilterWarningsViewModel)this.DataContext;
+        _viewModel = new ViewModels.FilterWarningsViewModel();
+        DataContext = _viewModel;
         _viewModel.ClosingRequest += (sender, e) => this.Close();
 
     }
