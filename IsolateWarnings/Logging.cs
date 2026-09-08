@@ -29,7 +29,7 @@ internal static class Logging
 
         var logPath = System.IO.Path.Combine(baseLogDirectory, "Log.json");
         var cultureInfo = Thread.CurrentThread.CurrentCulture;
-        var regionInfo = new RegionInfo(cultureInfo.LCID);
+        var regionInfo = new RegionInfo(cultureInfo.Name);
         var clientId = ClientIdProvider.GetOrCreateClientId();
 
         var loggerConfig = new LoggerConfiguration()
