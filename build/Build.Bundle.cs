@@ -18,12 +18,15 @@ partial class Build
         {
             if (configuration.StartsWith("Release"))
             {
-                var project = Solution.IsolateWarnings.GetMSBuildProject(configuration);
-                var projectBinDirectory = Path.Combine(project.DirectoryPath, @"bin\x64", configuration);
+                if (configuration == "Release R21")
+                {
+                    Log.Warning("Skipping configuration {configuration}. This version is no longer supported.", configuration);
+                    continue;
+                }
 
-                Log.Information(projectBinDirectory);
+                var projectBinDirectory = Path.Combine(Solution.IsolateWarnings.Directory, @"bin\x64", configuration);
+                Log.Information("Bundle source directory: {directory}", projectBinDirectory);
 
-                var files = Directory.GetFiles(projectBinDirectory, "*.*");
                 var destinationDirectory = Path.Combine(bundleContentsDirectory, "2022");
 
                 var configurationToDirectoryMap = new Dictionary<string, string>
@@ -66,10 +69,15 @@ partial class Build
             var packageContents = new _build.ApplicationPackage();
             packageContents.LoadFromXml(bundlePackageContents);
 
+            var version = GetProjectVersion(Path.Combine(RootDirectory, @"IsolateWarnings\IsolateWarnings.csproj"));
+
+            packageContents.AppVersion = version;
+            packageContents.FriendlyVersion = version;
+
             //TODO check all versions exist and create new components if not
             foreach (var component in packageContents.Components)
             {
-                component.ComponentEntry.Version = Solution.IsolateWarnings.GetProperty("Version");
+                component.ComponentEntry.Version = version;
             }
 
             packageContents.SaveToXml(bundlePackageContents);
@@ -80,6 +88,8 @@ partial class Build
         {
             File.Delete(bundleZip);
         }
+
         System.IO.Compression.ZipFile.CreateFromDirectory(bundleDirectory, bundleZip);
+        Log.Information("Created bundle zip: {bundleZip}", bundleZip);
     });
 }

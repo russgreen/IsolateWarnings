@@ -6,7 +6,7 @@
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPPRODUCTICON" Value="Warnings.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Russell Green"/>
-    <ROW Property="ProductCode" Value="1033:{12B15F6C-F48D-4212-BD81-83CE54C959FB} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{A7E2F951-5D97-48B0-9AC5-387C334AB16F} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Isolate Warnings"/>
     <ROW Property="ProductVersion" Value="3.8.1" Options="32"/>
