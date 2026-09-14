@@ -181,67 +181,7 @@
                 </CheckBox>
             </StackPanel>
 
-            <syncfusion:SfDataGrid Grid.Row="1"
-                                   Margin="0,0,0,0" 
-                   x:Name="sfDataGridFailures"
-                   ItemsSource="{Binding FilteredFailures }" 
-                   SelectedItems="{Binding SelectedFailures, Mode=TwoWay}"
-                   AutoGenerateColumns="False"      
-                   AllowGrouping="True" 
-                   AllowFiltering="True"
-                   AllowSorting="True"
-                   NavigationMode="Row" 
-                   SelectionMode="Extended" 
-                   RowSelectionBrush="#9993B8D9"
-                   ColumnSizer="AutoWithLastColumnFill" >
-
-                <syncfusion:SfDataGrid.SortColumnDescriptions>
-                    <syncfusion:SortColumnDescription ColumnName="IsCritical" SortDirection="Descending" />
-                    <syncfusion:SortColumnDescription ColumnName="Severity" SortDirection="Ascending" />
-                    <syncfusion:SortColumnDescription ColumnName="Description" SortDirection="Ascending" />
-                </syncfusion:SfDataGrid.SortColumnDescriptions>
-                <syncfusion:SfDataGrid.GroupColumnDescriptions>
-                    <syncfusion:GroupColumnDescription ColumnName="Description" />
-                </syncfusion:SfDataGrid.GroupColumnDescriptions>
-
-                <syncfusion:SfDataGrid.Columns>
-                    <syncfusion:GridCheckBoxSelectorColumn MappingName="SelectorColumn" HeaderText="" Width="34" />
-                    <!-- Critical indicator column -->
-                    <syncfusion:GridTemplateColumn MappingName="IsCritical" HeaderText="⚠" Width="36" AllowFiltering="True" AllowSorting="True">
-                        <syncfusion:GridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="⚠"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           Foreground="#8E44AD"
-                                           FontSize="13"
-                                           FontWeight="Bold"
-                                           Visibility="{Binding IsCritical, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                           ToolTip="{Binding CriticalReason}"/>
-                            </DataTemplate>
-                        </syncfusion:GridTemplateColumn.CellTemplate>
-                    </syncfusion:GridTemplateColumn>
-                    <syncfusion:GridTextColumn MappingName="Severity" HeaderText="Severity" Width="100" AllowEditing="False" />
-                    <syncfusion:GridTextColumn MappingName="Description" HeaderText="Description" AllowEditing="False" />
-                    <syncfusion:GridTextColumn MappingName="ResolutionCaption" HeaderText="Resolution" Width="300" AllowEditing="False" />
-                </syncfusion:SfDataGrid.Columns>
-
-                <syncfusion:SfDataGrid.DetailsViewDefinition>
-                    <syncfusion:GridViewDefinition RelationalColumn="FailingElements">
-                        <syncfusion:GridViewDefinition.DataGrid>
-                            <syncfusion:SfDataGrid AutoGenerateColumns="False"
-                                                   ColumnSizer="AutoWithLastColumnFill">
-                                <syncfusion:SfDataGrid.Columns>
-                                    <syncfusion:GridTextColumn MappingName="Id" HeaderText="ID" Width="100" AllowEditing="False" />
-                                    <syncfusion:GridTextColumn MappingName="CategoryName" HeaderText="Category" Width="250" AllowEditing="False" />
-                                    <syncfusion:GridTextColumn MappingName="Name" HeaderText="Name" AllowEditing="False" />
-                                </syncfusion:SfDataGrid.Columns>
-                            </syncfusion:SfDataGrid>
-                        </syncfusion:GridViewDefinition.DataGrid>
-                    </syncfusion:GridViewDefinition>
-                </syncfusion:SfDataGrid.DetailsViewDefinition>
-
-            </syncfusion:SfDataGrid>
+            <ContentControl x:Name="sfDataGridFailuresHost" Grid.Row="1" />
         </Grid>
 
         <!-- Button Panel -->
