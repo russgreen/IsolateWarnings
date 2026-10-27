@@ -6,7 +6,7 @@
 	  <Platforms>x64</Platforms>
 	  <Description>Isolate elements with warnings in Revit</Description>
 	  <Copyright>Copyright © Russell Green</Copyright>
-	  <Version>3.9.0</Version>
+	  <Version>3.10.0</Version>
 	  <PlatformTarget>x64</PlatformTarget>
 	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	  <LangVersion>latest</LangVersion>
@@ -51,13 +51,13 @@
 	  <DefineConstants>$(DefineConstants);REVIT2022_OR_GREATER;REVIT2023_OR_GREATER;REVIT2024_OR_GREATER</DefineConstants>
   </PropertyGroup>
 	<PropertyGroup Condition="$(Configuration.Contains('R25'))">
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<RevitVersion>2025</RevitVersion>
 		<DefineConstants>$(DefineConstants);REVIT2025</DefineConstants>
 		<DefineConstants>$(DefineConstants);REVIT2019_OR_GREATER;REVIT2020_OR_GREATER;REVIT2021_OR_GREATER;REVIT2022_OR_GREATER;REVIT2023_OR_GREATER;REVIT2024_OR_GREATER;REVIT2025_OR_GREATER</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(Configuration.Contains('R26'))">
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net10.0-windows</TargetFramework>
 		<RevitVersion>2026</RevitVersion>
 		<DefineConstants>$(DefineConstants);REVIT2026</DefineConstants>
 		<DefineConstants>$(DefineConstants);REVIT2019_OR_GREATER;REVIT2020_OR_GREATER;REVIT2021_OR_GREATER;REVIT2022_OR_GREATER;REVIT2023_OR_GREATER;REVIT2024_OR_GREATER;REVIT2025_OR_GREATER;REVIT2026_OR_GREATER</DefineConstants>

@@ -41,6 +41,10 @@
     <Build Solution="Debug R25|*" Project="false" />
     <Build Solution="Debug R26|*" Project="false" />
   </Project>
+  <Project Path="installer/IsolateWarnings.Setup.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
+    <Platform Project="x64" />
+    <Build Solution="*|*" Project="false" />
+  </Project>
   <Project Path="IsolateWarnings/IsolateWarnings.csproj">
     <Platform Project="x64" />
   </Project>

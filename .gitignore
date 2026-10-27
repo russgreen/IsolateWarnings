@@ -351,9 +351,7 @@ MigrationBackup/
 
 # Bundles and Installer
 Bundle
-Installer/*.back.aip
-Installer/IsolateWarnings-cache/*
-Installer/IsolateWarnings-SetupFiles/*
+installer/*-SetupFiles/
 /SyncfusionKey.txt
 
 # misc solution stuff
