@@ -19,7 +19,7 @@
   <Package Name="Isolate Warnings"
            Manufacturer="Russ Green"
            Version="$(var.ProductVersion)"
-           UpgradeCode="F04F085F-5478-481E-B50C-946A19EEF10F"
+           UpgradeCode="B7A94109-FB59-4E4B-AEC1-39C79BFFFFCD" 
            Language="1033"
            Scope="perMachine">
 
