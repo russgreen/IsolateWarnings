@@ -10,7 +10,7 @@ partial class Build
     .TriggeredBy(Sign)
     .Executes(() =>
     {
-        var bundleDirectory = RootDirectory / "Bundle" / "RG tools Isolate Warnings.bundle";
+        var bundleDirectory = RootDirectory / "Bundle" / "RussGreenIsolateWarnings.bundle";
         var bundleContentsDirectory = bundleDirectory / "Contents";
         var bundlePackageContents = bundleDirectory / "PackageContents.xml";
 
